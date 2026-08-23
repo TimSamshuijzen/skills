@@ -306,7 +306,8 @@ If you altered the requirements, then set their state to `defined`, and empty
 their Test result cells.
 
 If you altered the requirements, then ensure the step number in 
-`architect.json` is set to 1.
+`architect.json` is set to 1, give a brief report to the user, and wait for the 
+next user request before continuing.
 
 If nothing is altered, then ask the user what to do next.
 

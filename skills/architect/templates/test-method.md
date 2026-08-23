@@ -15,5 +15,5 @@ directory does not exist, then create it.
 
 # How to test the solution
 
-**This is an empty template. Use it as a starter for making the test plan for testing the solution.**
+**This is an empty template. Use it as a starter for making the test plan for testing the solution. Remove this text before use.**
 
