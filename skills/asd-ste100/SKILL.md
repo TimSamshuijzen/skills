@@ -190,6 +190,4 @@ the text and do the check again.
 - [ ] No step was removed, added, or put in a different sequence.
 
 
-Never change the technical content to obey a rule. If a rule and the technical
-accuracy have a conflict, tell the user.
 

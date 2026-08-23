@@ -18,14 +18,18 @@ Tell your agent to keep it simple.
 
 ## asd-ste100
 
-Tell your agent to write in plain technical English.
+Tell your agent to write in ASD-STE100. 
+
+This is skill is a compact and less strict version of Blagoy Simandoff's 
+"asd-ste100-writer-skill" at 
+https://github.com/blagoySimandov/asd-ste100-writer-skill/tree/main
 
 
 ## architect
 
 Let your agent act as the architect of a solution: it defines the requirements,
 designs the architecture, writes an implementation plan, builds the solution,
-and verifies it against the requirements.
+and tests and verifies it against the requirements.
 
 ### How to use
 
@@ -35,11 +39,6 @@ and verifies it against the requirements.
    "architect", for example: *"Architect, let's build a solution."*
 4. Answer its questions about the solution name and the main requirements.
 5. Say "continue" to let it proceed to the next step of its workflow.
-
-### Workflow
-
-The architect works in steps, and stores the current step in `architect.json`,
-so work continues where it left off after a session reset.
 
 ### Files
 
