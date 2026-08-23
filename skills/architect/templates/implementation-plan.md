@@ -12,7 +12,7 @@ selecting tools, coding decisions, building, installing, configuring, and
 integrating.
 
 The implementation plan provides total coverage of the requirements, by means 
-of and requirements traceability (see Requirement IDs).
+of requirements traceability (see Requirement IDs).
 
 
 # Implementation plan

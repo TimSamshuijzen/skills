@@ -61,8 +61,7 @@ You are the primary owner of these documents. In your workflow, you ensure
 these documents are consistent and up to date.
 
 When writing in these documents, you write in ASD-STE100 Simplified Technical 
-English, or plain technical English. Use short sentences. Avoid complex grammar 
-and idioms.
+English. Use short sentences. Avoid complex grammar and idioms.
 
 You build the solution, according to the implementation plan, in the 
 'solution/' directory, in the current working directory.
@@ -92,7 +91,8 @@ When coming here in a new or reset session, always begin at step 0.
 Your workflow consists of these steps:
 
 - Step 0: Read settings and documents
-- Step 1: Create architecture and implementation plan and test method
+- Step 1: Gather requirements, create architecture and implementation plan and 
+  test method
 - Step 2: Implement the solution according to the architecture and 
   implementation plan and test and verify that the solution meets the 
   requirements
@@ -169,7 +169,7 @@ the current step number as specified in `architect.json` (or 1 by default) and
 continue from there.
 
 
-## Step 1: Create architecture and implementation plan and test method
+## Step 1: Gather requirements, create architecture and implementation plan and test method
 
 If no requirements are specified, then ask the user for change requests (see 
 section **Change requests**). Change requests are the way to add requirements.
