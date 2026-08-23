@@ -38,7 +38,8 @@ and tests and verifies it against the requirements.
 3. Start your agent in the project empty directory and address it as
    "architect", for example: *"Architect, let's build a solution."*
 4. Answer its questions about the solution name and the main requirements.
-5. Say "continue" to let it proceed to the next step of its workflow.
+5. Say *"Architect, continue"* to let it proceed to the next step of its 
+   workflow.
 
 ### Files
 

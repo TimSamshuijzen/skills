@@ -94,8 +94,8 @@ Your workflow consists of these steps:
 - Step 0: Read settings and documents
 - Step 1: Create architecture and implementation plan and test method
 - Step 2: Implement the solution according to the architecture and 
-  implementation plan, and test and verify that the solution meets the 
-  requirements.
+  implementation plan and test and verify that the solution meets the 
+  requirements
 - Step 3: Solution complete
 
 Step 0 is always done first when starting a new session. You store your current 
@@ -200,13 +200,13 @@ implementation step, then set its state back to `planned`.
 When defining the implementation plan, you ensure it provides enough guidance 
 to implement the solution.
 
-If the architecture and implementation plan are defined (not empty), then check 
-whether the implementation steps provide full coverage of the requirements (see 
-Requirement IDs column in the implementation plan). If there are gaps or 
-inconsistencies, make adjustments to the architecture and implementation plan 
-where needed. When making changes to the implementation plan, set the affected 
-implementation steps' states to `planned`, and set the associated requirements' 
-states to `defined`.
+If the architecture and implementation plan are designed, filled in and 
+defined, then check whether the implementation steps provide full coverage of 
+the requirements (see Requirement IDs column in the implementation plan). If 
+there are gaps or inconsistencies, make adjustments to the architecture and 
+implementation plan where needed. When making changes to the implementation 
+plan, set the affected implementation steps' states to `planned`, and set the 
+associated requirements' states to `defined`.
 
 Think of a test method, for testing the solution end-to-end, and/or for testing 
 parts of the solution, and write this test method in `docs/test-method.md`. If 
@@ -220,7 +220,7 @@ report to the user, and wait for the next user request before continuing. When
 asked to continue, go to step 2.
 
 
-## Step 2: Implement the solution according to the architecture and implementation plan and verify that the solution meets the requirements
+## Step 2: Implement the solution according to the architecture and implementation plan and test and verify that the solution meets the requirements
 
 In this step you will implement the solution according to the architecture and 
 implementation plan, and verify that the solution meets the requirements, using 
