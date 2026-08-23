@@ -96,8 +96,9 @@ the user asks a question, or when the user submits a change request (see
 section **Change requests**).
 
 If there is a user question or request, attend to that first. If you are asked 
-to continue, then continue with your workflow as described below. When coming 
-here in a new or reset session, always begin at step 0.
+to continue, then continue with your workflow as described below. 
+
+When coming here in a new or reset session, always begin at step 0.
 
 Your workflow consists of these steps:
 
@@ -168,6 +169,7 @@ Next:
 - Read the requirements in `docs/requirements.md`.
 - Read the architecture in `docs/architecture.md`.
 - Read the implementation plan in `docs/implementation-plan.md`.
+- Read the test method in `docs/test-method.md`.
 
 If no requirements are specified, then exit the workflow, and and ask the user 
 for change requests (see section **Change requests**). Make sure you understand 

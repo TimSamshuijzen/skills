@@ -48,6 +48,7 @@ architect.json          Current workflow step
 docs/requirements.md    Requirements table (state: defined, pass, fail)
 docs/architecture.md    Architecture of the solution
 docs/implementation-plan.md  Implementation steps (state: planned, done)
+docs/test-method.md     Method for testing and verifying the solution
 solution/               The solution that is built
 ```
 
