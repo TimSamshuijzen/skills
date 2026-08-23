@@ -30,10 +30,17 @@ state:
 - The `planned` state indicates that the step is not yet implemented, or that 
   the implementation of the step is not yet complete.
 - When the step is implemented and works, set its state to `done`.
-- When the description of an implementation step is changed, reset its state to 
-  `planned`.
+- When the description of an implementation step is changed during planning, 
+  reset its state to `planned`. Planning is when the architecture and the 
+  implementation plan are made or adjusted, before implementation.
+- During implementation, you can correct the description of the step that you 
+  implement, to make it agree with what you did. Such a correction does not 
+  reset the state of that step.
+- Writing in the Implementation notes column never changes the state.
 - When an implementation step is blocked, keep its state at `planned` and write 
   the problem in the Implementation notes column.
+- When you find that a step with state `done` is wrong and must be implemented 
+  again, then set its state back to `planned`.
 
 The implementation plan table has these columns:
 - ID - Unique identifier of the implementation step. ID is a number with prefix 

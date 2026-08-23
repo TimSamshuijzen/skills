@@ -202,10 +202,11 @@ to implement the solution.
 
 If the architecture and implementation plan are defined (not empty), then check 
 whether the implementation steps provide full coverage of the requirements (see 
-Requirement IDs column). If there are gaps or inconsistencies, make adjustments 
-to the architecture and implementation plan where needed. When making changes 
-to the implementation plan, set the affected implementation steps' states to 
-`planned`, and set the associated requirements' states to `defined`.
+Requirement IDs column in the implementation plan). If there are gaps or 
+inconsistencies, make adjustments to the architecture and implementation plan 
+where needed. When making changes to the implementation plan, set the affected 
+implementation steps' states to `planned`, and set the associated requirements' 
+states to `defined`.
 
 Think of a test method, for testing the solution end-to-end, and/or for testing 
 parts of the solution, and write this test method in `docs/test-method.md`. If 
@@ -239,13 +240,24 @@ with the actual steps you took to get it working. The architecture and the
 implementation plan ensures that the implementation is efficiently 
 reproducible, always leading to the same or similar solution.
 
+These updates record what you actually did. They do not reset the state of the 
+step that you implement, and they do not reset the states of the associated 
+requirements. Writing in the Implementation notes column never changes state. 
+The states are only reset when you make a new plan, as described in step 1.
+
 Do the implementation steps in order of ID. Skip the implementation steps that 
 have state `done`. For each implementation step that has state `planned`:
 - Implement the step. If the code for the step already exists, then check 
   whether it is complete and works.
 - Write in the Implementation notes column what you did, and the decisions you 
   made. These notes make the implementation reproducible.
+- Correct the description of the step, if it does not agree with what you did.
 - When the step is implemented and works, set its state to `done`.
+
+If you find that a step with state `done` is wrong and must be implemented 
+again, then set its state back to `planned`, and set the states of its 
+associated requirements to `defined`. The step is then implemented and tested 
+again in this same step 2.
 
 The state of the implementation steps is your record of progress. In this way, 
 if a session is reset, you continue the implementation from where you left off.

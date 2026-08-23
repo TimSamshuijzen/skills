@@ -22,8 +22,13 @@ A requirement has state. Explanation of a requirement's state:
   tested against the acceptance criteria of the requirement.
 - When a requirement definition or acceptance criteria is changed, then reset 
   its state to `defined`.
-- When the implementation plan is changed, then set the associated 
-  requirements' states to `defined`.
+- When the implementation plan is changed during planning, then set the 
+  associated requirements' states to `defined`. Planning is when the 
+  architecture and the implementation plan are made or adjusted, before 
+  implementation.
+- During implementation, notes and corrections that only record what was 
+  actually done are written in the implementation plan. These do not change the 
+  requirements' states.
 - When the solution is tested against the acceptance criteria of a requirement, 
   and the test passes successfully, then set the requirement's state to `pass`. 
   If the test fails, then set the requirement's state to `fail`.
