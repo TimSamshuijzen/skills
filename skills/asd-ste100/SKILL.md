@@ -18,13 +18,12 @@ Follow this procedure when writing in ASD-STE100.
 1. Read the source text. Find the text type. Procedural text gives
    instructions. Descriptive text gives data.
 2. Read section **ASD-STE100 writing rules**. Obey all the rules.
-3. Read section **ASD-STE100 word choices**.
-4. Write the new text.
-5. Do the quality check in section **ASD-STE100 checklist**.
+3. Write the new text.
+4. Do the quality check in section **ASD-STE100 checklist**.
 
 ## ASD-STE100 writing rules
 
-* Avoid the "Do not use" words.
+* Avoid the "Do not use" words (see **ASD-STE100 word choices**).
 * Write short sentences. A procedural sentence has a maximum of 20 words. A
 descriptive sentence has a maximum of 25 words.
 * Write one instruction in one sentence. If a step has two actions, write two
@@ -160,7 +159,6 @@ the text and do the check again.
 
 ### Words
 
-- [ ] Each word is an approved word, a technical name, or a technical verb.
 - [ ] No word from the "Do not use" tables is in the text.
 - [ ] Each term is the same in all of the text. There are no synonyms.
 - [ ] No "-ing" word is a noun or an adjective. Technical names are exceptions.

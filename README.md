@@ -18,7 +18,7 @@ Tell your agent to keep it simple.
 
 ## asd-ste100
 
-Tell your agent to write in ASD-STE100 Simplified Technical English.
+Tell your agent to write in plain technical English.
 
 
 ## architect
