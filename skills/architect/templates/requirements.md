@@ -12,9 +12,9 @@ input for creating the architecture and implementation plan.
 
 The requirements table (see table below) lists all the requirements for the 
 solution. When making changes to the table, make sure the table format remains 
-intact. The rows are sorted by ID. Each row of the table is a single text line. 
-When a cell value has newlines, use html break \<br\> for newlines. When a cell 
-value has a pipe symbol, then escape it.
+intact. The rows are sorted numerically by ID. Each row of the table is a 
+single text line. When a cell value has newlines, use html break \<br\> for 
+newlines. When a cell value has a pipe symbol, then escape it.
 
 A requirement has state. Explanation of a requirement's state:
 - When a requirement is added, set its state to `defined`.
@@ -36,7 +36,7 @@ The requirements table has these columns:
   requirement.
 - Acceptance criteria - Criteria that the solution must satisfy, with short 
   explanation on how to test.
-- Test result - Result of testing and whether the acceptance criteria
+- Test result - Result of testing and whether it meets the acceptance criteria.
 - Architect notes - Notes by the architect.
 - State - `defined`, `pass`, `fail`
 

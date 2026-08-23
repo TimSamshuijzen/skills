@@ -19,9 +19,10 @@ of and requirements traceability (see Requirement IDs).
 
 The implementation plan table (see table below) lists all the implementation 
 steps for implementing the solution. When making changes to the table, make 
-sure the table format remains intact. The rows are sorted by ID. Each row of 
-the table is a single text line. When a cell value has newlines, use html 
-break \<br\> for newlines. When a cell value has a pipe symbol, then escape it.
+sure the table format remains intact. The rows are sorted numerically by ID. 
+Each row of the table is a single text line. When a cell value has newlines, 
+use html break \<br\> for newlines. When a cell value has a pipe symbol, then 
+escape it.
 
 An implementation step has state. Explanation of an implementation step's 
 state:

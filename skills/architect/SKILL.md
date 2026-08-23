@@ -74,25 +74,13 @@ solution/
 The structure of the `solution/` directory is defined (explicit or implicit) in 
 the implementation plan.
 
-Overview of files, relative to the current working directory:
-
-```
-solution.json
-architect.json
-docs/
-  requirements.md
-  architecture.md
-  implementation-plan.md
-  test-method.md
-solution/
-```
 
 # Your workflow
 
 Your main workflow is to design, plan, implement, test and verify the 
 solution, and keep everything consistent. When your workflow is complete, or 
-when waiting between steps, you ready to respond to user requests, such as when 
-the user asks a question, or when the user submits a change request (see 
+when waiting between steps, you are ready to respond to user requests, such as 
+when the user asks a question, or when the user submits a change request (see 
 section **Change requests**).
 
 If there is a user question or request, attend to that first. If you are asked 
@@ -171,16 +159,20 @@ Next:
 - Read the implementation plan in `docs/implementation-plan.md`.
 - Read the test method in `docs/test-method.md`.
 
-If no requirements are specified, then exit the workflow, and and ask the user 
-for change requests (see section **Change requests**). Make sure you understand 
-all the change requests. If these are unclear, ask the user for clarification 
-and/or decisions. Keep asking the user for change requests, until you have at 
-least a minimal set of requirements in order to design and implement the 
-solution.
+If no requirements are specified, then ask the user for change requests (see 
+section **Change requests**). Change requests are the way to add requirements.
+Make sure you understand all the change requests. If these are unclear, ask the 
+user for clarification and/or decisions. Keep asking the user for change 
+requests, until you have at least a minimal set of requirements in order to 
+design and implement the solution.
 
-When you have complete and clear requirements, go to (jump to) the current step 
-number as specified in `architect.json` (or 1 by default) and continue from 
-there.
+If you made any changes to the documents during this step, then give a brief 
+report to the user, and wait for the next user request before continuing. When 
+asked to continue, and if the requirements are clear, then go to step 1.
+
+If you made no changes to the documents during this step, and if the 
+requirements are clear, then go to (jump to) the current step number as 
+specified in `architect.json` (or 1 by default) and continue from there.
 
 
 ## Step 1: Create architecture and implementation plan and test method
@@ -207,9 +199,9 @@ implementation step, then set its state back to `planned`.
 When defining the implementation plan, you ensure it provides enough guidance 
 to implement the solution.
 
-If the architecture and implementation plan already exist, then check whether 
-the implementation steps provide full coverage of the requirements (see 
-Requirement IDs colum). If there are gaps or inconsistencies, make adjustments 
+If the architecture and implementation plan are defined (not empty), then check 
+whether the implementation steps provide full coverage of the requirements (see 
+Requirement IDs column). If there are gaps or inconsistencies, make adjustments 
 to the architecture and implementation plan where needed. When making changes 
 to the implementation plan, set the affected implementation steps' states to 
 `planned`, and set the associated requirements' states to `defined`.
@@ -222,7 +214,8 @@ lead to a different test method).
 
 When the architecture, implementation plan and test method are complete and 
 consistent, then set the step number in `architect.json` to 2, give a brief 
-report to the user, and wait for the next user request before continuing.
+report to the user, and wait for the next user request before continuing. When 
+asked to continue, go to step 2.
 
 
 ## Step 2: Implement the solution according to the architecture and implementation plan and verify that the solution meets the requirements
@@ -263,20 +256,21 @@ requirement to `pass`. If it does not pass, set the state to `fail`.
 
 Keep on implementing and testing and adjusting code until all requirements 
 pass. If an implementation step cannot be made to pass the associated 
-requirements after reasonable attempts (say 10 iterations), then keep its state 
-at `planned`, write the problem in the Implementation notes column, and stop 
-and ask the user what to do next.
+requirements after reasonable attempts (say 10 iterations of trying things 
+out), then keep its state at `planned`, write the problem in the Implementation 
+notes column, and ask the user what to do next.
 
 When the solution is fully built and verified (all implementation steps have 
 state equal to `done`, and all requirements have state equal to `pass`), then 
 set the step number in `architect.json` to 3, give a brief report to the user, 
-and wait for the next user request before continuing.
+and wait for the next user request before continuing. When asked to continue, 
+go to step 3.
 
 
 ## Step 3: Solution complete
 
-In this step, the docuiments are consistent, and the solution meets all 
-specified requirements.
+In this step, the documents are consistent, and the solution meets all 
+specified requirements. Your work is done for now.
 
 Stop and ask the user what to do next.
 
@@ -295,8 +289,8 @@ When the change request is clear, then augment the requirements in
 - For each new requirement, fill in the cells as described in the document, and 
   ensure acceptance criteria are specified.
 
-If you altered the requirements, then set their state to `defined`, set the 
-step number in `architect.json` to 1, and wait for the next user request 
-before continuing.
+If you altered the requirements, then set their state to `defined`, empty their 
+Test result cells, set the step number in `architect.json` to 1, and wait for 
+the next user request before continuing. When asked to continue, go to step 1.
 
 If nothing is altered, then ask the user what to do next.
