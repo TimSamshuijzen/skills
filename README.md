@@ -5,6 +5,7 @@ Skills for agents.
 Each sub-directory in the `skills` directory is a skill.
 
 - `skills/keeping-it-simple/`
+- `skills/asd-ste100/`
 - `skills/architect/`
 
 You can copy these skills to your own project.
@@ -13,6 +14,11 @@ You can copy these skills to your own project.
 ## keeping-it-simple
 
 Tell your agent to keep it simple.
+
+
+## asd-ste100
+
+Tell your agent to write in ASD-STE100 Simplified Technical English.
 
 
 ## architect
