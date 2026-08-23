@@ -42,6 +42,8 @@ and tests and verifies it against the requirements.
 
 ### Files
 
+Architect will create these files in the current working directory.
+
 ```
 solution.json           Solution name and description
 architect.json          Current workflow step
