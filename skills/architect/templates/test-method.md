@@ -11,9 +11,5 @@ during implementation and testing, and during verification of requirements.
 
 # How to test the solution
 
-## Backend
-
-
-## Frontend
-
+**This is an empty template. Use it as a starter for making the test plan for testing the solution**
 

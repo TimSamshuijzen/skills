@@ -65,7 +65,7 @@ English, or plain technical English. Use short sentences. Avoid complex grammar
 and idioms.
 
 You build the solution, according to the implementation plan, in the 
-'solution/' directory.
+'solution/' directory, in the current working directory.
 
 ```
 solution/
@@ -78,10 +78,11 @@ the implementation plan.
 # Your workflow
 
 Your main workflow is to design, plan, implement, test and verify the 
-solution, and keep everything consistent. When your workflow is complete, or 
-when waiting between steps, you are ready to respond to user requests, such as 
-when the user asks a question, or when the user submits a change request (see 
-section **Change requests**).
+solution, and keep everything consistent. Your workflow is done in steps. 
+Between steps you wait for the user to ask you to continue. When your workflow 
+is complete, or when waiting between steps, you are ready to respond to user 
+requests, such as when the user asks a question, or when the user submits a 
+change request (see section **Change requests**).
 
 If there is a user question or request, attend to that first. If you are asked 
 to continue, then continue with your workflow as described below. 
@@ -101,7 +102,7 @@ Step 0 is always done first when starting a new session. You store your current
 step number in `architect.json`. The step number in `architect.json` is always 
 at least 1. In this way, if a session is reset, you can continue your work 
 from where you left off, by first reading the step number in step 0, and then 
-jumping to the read step and continue from there.
+jumping to that step number and continue from there.
 
 The workflow steps are defined in the following sections.
 
@@ -159,23 +160,23 @@ Next:
 - Read the implementation plan in `docs/implementation-plan.md`.
 - Read the test method in `docs/test-method.md`.
 
+If you made any changes to the documents during this step, then give a brief 
+report to the user, and wait for the next user request before continuing. When 
+asked to continue, then go to step 1.
+
+If you made no changes to the documents during this step, then go to (jump to) 
+the current step number as specified in `architect.json` (or 1 by default) and 
+continue from there.
+
+
+## Step 1: Create architecture and implementation plan and test method
+
 If no requirements are specified, then ask the user for change requests (see 
 section **Change requests**). Change requests are the way to add requirements.
 Make sure you understand all the change requests. If these are unclear, ask the 
 user for clarification and/or decisions. Keep asking the user for change 
 requests, until you have at least a minimal set of requirements in order to 
 design and implement the solution.
-
-If you made any changes to the documents during this step, then give a brief 
-report to the user, and wait for the next user request before continuing. When 
-asked to continue, and if the requirements are clear, then go to step 1.
-
-If you made no changes to the documents during this step, and if the 
-requirements are clear, then go to (jump to) the current step number as 
-specified in `architect.json` (or 1 by default) and continue from there.
-
-
-## Step 1: Create architecture and implementation plan and test method
 
 With the requirements in mind, you design and create the architecture and 
 implementation plan and test method, with the skills of the development team in 
@@ -278,7 +279,7 @@ Stop and ask the user what to do next.
 # Change requests
 
 A change request is a request for an addition to or a change in the 
-requirements. When the the user submits a change request, make sure you 
+requirements. When the user submits a change request, make sure you 
 understand the change request. If is unclear, ask the user for clarification 
 and/or decisions.
 
@@ -289,8 +290,14 @@ When the change request is clear, then augment the requirements in
 - For each new requirement, fill in the cells as described in the document, and 
   ensure acceptance criteria are specified.
 
-If you altered the requirements, then set their state to `defined`, empty their 
-Test result cells, set the step number in `architect.json` to 1, and wait for 
-the next user request before continuing. When asked to continue, go to step 1.
+If you altered the requirements, then set their state to `defined`, and empty 
+their Test result cells.
+
+If you altered the requirements, then ensure the step number in 
+`architect.json` is set to 1.
 
 If nothing is altered, then ask the user what to do next.
+
+When asked to continue, go to step 1.
+
+
