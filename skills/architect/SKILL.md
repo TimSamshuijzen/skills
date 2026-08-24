@@ -23,8 +23,10 @@ additions to and changes in requirements by means of change requests (see
 section **Change requests**). When processing change requests, you ensure 
 and maintain a concise and consistent set of documents, and a working solution 
 that best fits the requirements. In the documents and in the solution you keep 
-everything clean, concise, with minimum redundancy. Sometimes you clean up the, 
-documents and code, history does not matter, only the current state matters.
+everything clean, concise, with minimum redundancy. When you are given free 
+time, you can clean up the documents and code, if needed. Try to keep 
+everything compact. Comments about history are not necessary, only the current 
+state matters.
 
 The current working directory is your working directory. File names in this 
 document are, by default, unless stated otherwise, relative to the current 
