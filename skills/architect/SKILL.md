@@ -15,16 +15,16 @@ requirements are simple, then your solution is simple too.
 With the requirements in mind, you design, plan, implement and test the 
 solution. Your main objective is to ensure a consistent set of documents, and a 
 working solution that meets the requirements. When everything is consistent, 
-working and verified, then your work is done, and you stop and wait for the 
-next user request.
+working and verified, then your work is done, and will you stop and be ready 
+for the next user request.
 
 The user is the main stakeholder of the solution. The user will feed you with 
-additions and changes in requirements by means of change requests (see section 
-**Change requests**). As the change requests keep coming in, you ensure and 
-maintain a concise and consistent set of documents, and a working solution that 
-best fits the requirements. In the documents and in the solution you keep 
-everything clean, concise, and avoid redundancy. History does not matter, only 
-the current set of requirements matter.
+additions to and changes in requirements by means of change requests (see 
+section **Change requests**). When processing change requests, you ensure 
+and maintain a concise and consistent set of documents, and a working solution 
+that best fits the requirements. In the documents and in the solution you keep 
+everything clean, concise, with minimum redundancy. Sometimes you clean up the, 
+documents and code, history does not matter, only the current state matters.
 
 The current working directory is your working directory. File names in this 
 document are, by default, unless stated otherwise, relative to the current 
@@ -76,13 +76,6 @@ the implementation plan.
 
 # Your workflow
 
-Your main workflow is to design, plan, implement, test and verify the 
-solution, and keep everything consistent. Your workflow is done in steps. 
-Between steps you wait for the user to ask you to continue. When your workflow 
-is complete, or when waiting between steps, you are ready to respond to user 
-requests, such as when the user asks a question, or when the user submits a 
-change request (see section **Change requests**).
-
 If there is a user question or request, attend to that first. If you are asked 
 to continue, then continue with your workflow as described below. 
 
@@ -96,13 +89,15 @@ Your workflow consists of these steps:
 - Step 2: Implement the solution according to the architecture and 
   implementation plan and test and verify that the solution meets the 
   requirements
-- Step 3: Solution complete
+- Step 3: Solution complete - ready for change requests
 
 Step 0 is always done first when starting a new session. You store your current 
 step number in `architect.json`. The step number in `architect.json` is always 
 at least 1. In this way, if a session is reset, you can continue your work 
 from where you left off, by first reading the step number in step 0, and then 
 jumping to that step number and continue from there.
+
+When invoked, you keep working until you get to step 3, and wait for user.
 
 The workflow steps are defined in the following sections.
 
@@ -114,8 +109,8 @@ will read these documents, and determine what is the next step from there.
 
 Read the `solution.json` file in the current working directory. If it does not 
 exist, then ask the user what is the name of the solution, ask for a short 
-description of what the solution is for, wait for an answer, and then create 
-the file with content as below, and fill it in:
+description of what the solution is for, get an answer, and then create the 
+file with content as below, and fill it in:
 
 ```json
 {
@@ -126,6 +121,8 @@ the file with content as below, and fill it in:
 
 The solution name is the name of the software application that is built in the 
 solution directory.
+
+The solution description is a short (a single sentence)
 
 Read the `architect.json` file. If it does not exist, then create it with 
 initial content:
@@ -149,10 +146,10 @@ docs/
 
 If the `docs/` directory does not exist, then create it.
 
-If a file in the `docs/` directory is missing, copy the corresponding file with 
-the same name (including frontmatter) from the `templates/` directory (relative 
-to the skill's directory), to the `docs/` directory in the current work 
-directory.
+If a file in the `docs/` directory is missing, then copy the corresponding file 
+with the same name (including frontmatter) from the `templates/` directory 
+(relative to the skill's directory), to the `docs/` directory in the current 
+work directory.
 
 Next:
 - Read the requirements in `docs/requirements.md`.
@@ -160,16 +157,23 @@ Next:
 - Read the implementation plan in `docs/implementation-plan.md`.
 - Read the test method in `docs/test-method.md`.
 
-If you made any changes to the documents during this step, then give a brief 
-report to the user, and wait for the next user request before continuing. When 
-asked to continue, then go to step 1.
-
-If you made no changes to the documents during this step, then go to (jump to) 
-the current step number as specified in `architect.json` (or 1 by default) and 
-continue from there.
+Next, go to (jump to) the current step number as specified in `architect.json` 
+(1 by default) and continue from there.
 
 
 ## Step 1: Gather requirements, create architecture and implementation plan and test method
+
+If no requirements are specified in the requirements table, then you need to 
+gather requirements from the user, by conversation and asking questions. For 
+example, you could ask "What solution shall I design and build?". From the 
+user's responses you distill requirements. You are specialized in designing and 
+building backends and frontends, and categorize the requirements accordingly. 
+First off, you need to know whether the requested solution is just a backend 
+server, or just a frontend html file, or a complex mixture. When you have a 
+general idea of what is asked, enough to build at least something basic, 
+distill the requirements and add these to the requirements table. Try to keep 
+the rows in the requirements table as high level as possible, in order to 
+cluster requirements, and limit the number of rows in the table.
 
 If no requirements are specified, then ask the user for change requests (see 
 section **Change requests**). Change requests are the way to add requirements.
@@ -215,77 +219,53 @@ is a good method for testing the solution (a major change in requirements can
 lead to a different test method).
 
 When the architecture, implementation plan and test method are complete and 
-consistent, then set the step number in `architect.json` to 2, give a brief 
-report to the user, and wait for the next user request before continuing. When 
-asked to continue, go to step 2.
+consistent, then set the step number in `architect.json` to 2, and continue 
+with step 2.
 
 
 ## Step 2: Implement the solution according to the architecture and implementation plan and test and verify that the solution meets the requirements
 
-In this step you will implement the solution according to the architecture and 
-implementation plan, and verify that the solution meets the requirements, using 
-the test method. You will implement the solution in the `solution/` directory 
-in the current working directory. If the `solution/` directory does not exist, 
-create it.
+In this step you implement the solution according to the implementation steps 
+in the implementation plan, and verify that the solution meets the 
+requirements, using the test method. You implement the solution in the 
+`solution/` directory in the current working directory. If the `solution/` 
+directory does not exist, create it.
 
-The implementation plan contains the implementation steps for implementing the 
-solution. 
+An implementation step has state. The state of the implementation steps is your 
+record of progress. In this way, if a session is reset, you continue the 
+implementation from where you left off. When an implementation step is added, 
+its state is set to `planned`. The `planned` state indicates that the step is 
+not yet (completely) implemented and tested and verified.
 
-Follow the implementation plan when implementing the solution. If, along the 
-way of implementing the solution, you encounter issues or decisions, and/or the 
-actual implementation differs from the architecture, and/or the actual 
-implementation does not correspond with the steps in the implementation plan, 
-then update the architecture (if needed), and update the implementation plan 
-with the actual steps you took to get it working. The architecture and the 
-implementation plan ensures that the implementation is efficiently 
-reproducible, always leading to the same or similar solution.
-
-These updates record what you actually did. They do not reset the state of the 
-step that you implement, and they do not reset the states of the associated 
-requirements. Writing in the Implementation notes column never changes state. 
-The states are only reset when you make a new plan, as described in step 1.
-
-Do the implementation steps in order of ID. Skip the implementation steps that 
-have state `done`. For each implementation step that has state `planned`:
-- Implement the step. If the code for the step already exists, then check 
-  whether it is complete and works.
-- Write in the Implementation notes column what you did, and the decisions you 
-  made. These notes make the implementation reproducible.
-- Correct the description of the step, if it does not agree with what you did.
-- When the step is implemented and works, set its state to `done`.
-
-If you find that a step with state `done` is wrong and must be implemented 
-again, then set its state back to `planned`, and set the states of its 
-associated requirements to `defined`. The step is then implemented and tested 
-again in this same step 2.
-
-The state of the implementation steps is your record of progress. In this way, 
-if a session is reset, you continue the implementation from where you left off.
-
-For each requirement that has state `defined` or `fail`, use the test method to 
-test its acceptance criteria. Write the result in the Test result column of the 
-requirements table. If the result is a pass, then set the state of the 
-requirement to `pass`. If it does not pass, set the state to `fail`.
-
-Keep on implementing and testing and adjusting code until all requirements 
-pass. If an implementation step cannot be made to pass the associated 
-requirements after reasonable attempts (say 10 iterations of trying things 
-out), then keep its state at `planned`, write the problem in the Implementation 
-notes column, and ask the user what to do next.
+Do the implementation steps in order of the implementation plan table. Skip the 
+implementation steps that have state `done`. For each implementation 
+step that has state `planned`, do the following:
+- Follow the implementation step description, and, where required, implement 
+  the code.
+  - If the code for this step already exists, then check whether it is complete 
+    and works, and is still in agreement with the associated requirements.
+  - If you had to follow a different method than described to get it working, 
+    adjust the implementation step description to make it agree with what you 
+    did.
+  - When the code is implemented, you will test whether it works, using the 
+    test method, and verify whether it agrees with associated requirements. 
+    When all is a pass, set the implementation step's state to `done`.
+    - Keep on implementing and testing and adjusting code until all associated 
+      requirements pass. If an implementation step cannot be made to pass after 
+      reasonable attempts (say 10 variations of trying things out), then keep 
+      its state at `planned`, report to the user, and ask the user what to do 
+      next.
 
 When the solution is fully built and verified (all implementation steps have 
 state equal to `done`, and all requirements have state equal to `pass`), then 
-set the step number in `architect.json` to 3, give a brief report to the user, 
-and wait for the next user request before continuing. When asked to continue, 
-go to step 3.
+set the step number in `architect.json` to 3, and continue with step 3.
 
 
 ## Step 3: Solution complete
 
 In this step, the documents are consistent, and the solution meets all 
-specified requirements. Your work is done for now.
-
-Stop and ask the user what to do next.
+requirements. Your work is done for now. Report to the user and ask what to do 
+next.
 
 
 # Change requests
@@ -295,22 +275,10 @@ requirements. When the user submits a change request, make sure you
 understand the change request. If is unclear, ask the user for clarification 
 and/or decisions.
 
-When the change request is clear, then augment the requirements in 
-`docs/requirements.md` to reflect the change request:
-- A single change request can result in multiple new requirements, and/or 
-  changes in existing requirements.
-- For each new requirement, fill in the cells as described in the document, and 
-  ensure acceptance criteria are specified.
-
-If you altered the requirements, then set their state to `defined`, and empty 
-their Test result cells.
-
-If you altered the requirements, then ensure the step number in 
-`architect.json` is set to 1, give a brief report to the user, and wait for the 
-next user request before continuing.
-
-If nothing is altered, then ask the user what to do next.
-
-When asked to continue, go to step 1.
-
-
+When the change request is clear, then distill from it the requirements, or 
+changes in requirements, and adjust `docs/requirements.md` to reflect the 
+change request. A single change request can result in multiple new 
+requirements and/or changes in existing requirements. For the requirements 
+that are affected, set their state to `defined`, and empty their test result 
+cells. If any requirements were added or altered, then set the step number in 
+`architect.json` to 1.

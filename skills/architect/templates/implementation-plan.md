@@ -11,9 +11,6 @@ implementation of the solution, including (where needed): guidance in
 selecting tools, coding decisions, building, installing, configuring, and 
 integrating.
 
-The implementation plan provides total coverage of the requirements, by means 
-of requirements traceability (see Requirement IDs).
-
 
 # Implementation plan
 
@@ -24,34 +21,22 @@ Each row of the table is a single text line. When a cell value has newlines,
 use html break \<br\> for newlines. When a cell value has a pipe symbol, then 
 escape it.
 
-An implementation step has state. Explanation of an implementation step's 
-state:
-- When an implementation step is added, its state is set to `planned`.
-- The `planned` state indicates that the step is not yet implemented, or that 
-  the implementation of the step is not yet complete.
-- When the step is implemented and works, set its state to `done`.
-- When the description of an implementation step is changed during planning, 
-  reset its state to `planned`. Planning is when the architecture and the 
-  implementation plan are made or adjusted, before implementation.
-- During implementation, you can correct the description of the step that you 
-  implement, to make it agree with what you did. Such a correction does not 
-  reset the state of that step.
-- Writing in the Implementation notes column never changes the state.
-- When an implementation step is blocked, keep its state at `planned` and write 
-  the problem in the Implementation notes column.
-- When you find that a step with state `done` is wrong and must be implemented 
-  again, then set its state back to `planned`.
+An implementation step has state. When an implementation step is added, its 
+state is set to `planned`. The `planned` state indicates that the step is not 
+yet (completely) implemented.
+
+When working on an implementation step, you can correct the description of the 
+step, to make it agree with what you did. When you get the solution working and 
+think it is ready for verification, set the implementation step's state to 
+`done`.
+
+When a verification of a requirement fails, the associated implementation 
+steps' states are reset to `planned`.
 
 The implementation plan table has these columns:
-- ID - Unique identifier of the implementation step. ID is a number with prefix 
-  "I". When an implementation step is added to an empty table, set the ID to 
-  "I1".
-- Implementation step name - Short descriptive name of the implementation step.
-- Implementation step description - Concise description of the implementation 
-  step.
-- Implementation notes - Notes made during implementation: what you did, the 
-  decisions you made, and the problems you found. These notes make the 
-  implementation reproducible.
+- Implementation step name - Short unique name of the implementation step.
+- Implementation step description - Description of the sub-steps for this 
+  implementation step.
 - Requirement IDs - IDs of requirements, to trace implementation steps to 
   requirements.
 - State - `planned`, `done`
@@ -59,7 +44,7 @@ The implementation plan table has these columns:
 
 ## Implementation plan table
 
-| ID | Implementation step name | Implementation step description | Implementation notes | Requirement IDs | State |
-| --- | --- | --- | --- | --- | --- |
+| Implementation step name | Implementation step description | Requirement IDs | State |
+| --- | --- | --- | --- |
 
 

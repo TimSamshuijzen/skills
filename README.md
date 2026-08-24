@@ -20,30 +20,41 @@ Tell your agent to keep it simple.
 
 Tell your agent to write in ASD-STE100. 
 
-This is skill is a compact and less strict version of Blagoy Simandoff's 
+This is skill is copied from Blagoy Simandoff's 
 "asd-ste100-writer-skill" at 
-https://github.com/blagoySimandov/asd-ste100-writer-skill/tree/main
+https://github.com/blagoySimandov/asd-ste100-writer-skill/tree/main ,
+and made more compact and less strict.
 
 
 ## architect
 
-Let your agent act as the architect of a solution: it defines the requirements,
-designs the architecture, writes an implementation plan, builds the solution,
-and tests and verifies it against the requirements.
+Let your agent act as the architect of your solution: it converts your idea 
+to requirements, designs the architecture, writes an implementation plan, 
+builds and tests the solution, until the solution meets all the requirements.
+
+Architect stores state. You can reset the session at any time, architect 
+will pick up from where it left off.
+
+You can add or change requirements, such as new features, by submitting
+change requests. Architect will process the change requests, adjust the 
+requirements, and work until the solution meets all requirements.
+
+Architect stores state. You can reset the session at any time. Architect 
+will pick up from where it left off, with a fresh context window.
+
 
 ### How to use
 
 1. Create a new empty project directory.
-2. Copy `skills/architect/` into your project's skills directory.
-3. Start your agent in the project empty directory and address it as
-   "architect", for example: *"Architect, let's build a solution."*
-4. Answer its questions about the solution name and the requirements.
-5. Say *"Architect, continue"* to let it proceed to the next step of its 
-   workflow.
+2. Copy `skills/architect/` into your project's skills directory (in Claude 
+   Code, put it in `.claude/skills/architect/`.).
+3. Start an agent (e.g. Claude Code) session in this directory and address it 
+   as "architect". For example: *"Architect, let's build a solution."*, or 
+   *"Architect, continue your work."*, or 
+   *"Architect, add feature X."*.
 
-### Files
-
-Architect will create these files in the current working directory.
+When invoked, architect will create these files in the current working 
+directory:
 
 ```
 solution.json           Solution name and description
@@ -55,15 +66,7 @@ docs/test-method.md     Method for testing and verifying the solution
 solution/               The solution that is built
 ```
 
-The state columns in the tables are the record of progress, and give
-traceability from requirements to implementation steps.
-
-### Notes
-
-- Ask a question or make a request at any time. The architect pauses its
-  workflow, answers, and continues when you tell it to continue.
-- Default technology preference: Node.js for backend, single page HTML with
-  vanilla JavaScript for frontend. Tell the architect the skills of your
-  development team to change this.
-
-
+The default technology preference of architect is: Node.js for backend, single 
+page HTML with vanilla JavaScript for frontend. Tell the architect the 
+preferred technology to change this. Alternatively, add the skills of the 
+development team to your project.
