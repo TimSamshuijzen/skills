@@ -5,46 +5,39 @@ description: Implementation plan for implementing the solution.
 
 # Document description
 
-This document defines the full implementation plan for implementing the 
-solution. It is a sequential list of "implementation steps" to guide in the 
-implementation of the solution, including (where needed): guidance in 
-selecting tools, coding decisions, building, installing, configuring, and 
-integrating.
+This document defines the implementation plan for implementing the solution. It 
+is a table with a sequential list of implementation tasks. The "Implementation 
+task description" column contains instructions for guiding the developer to 
+what is expected of the implementation task, such as selecting tools or design 
+decisions.
 
 
 # Implementation plan
 
-The implementation plan table (see table below) lists all the implementation 
-steps for implementing the solution. When making changes to the table, make 
-sure the table format remains intact. The rows are sorted numerically by ID. 
+The implementation plan is to work according to a series of "implementation 
+tasks".
+
+The implementation tasks table (see table below) lists the tasks required for 
+implementing the solution. The rows are sorted by logical and testable stages.
+
+When making changes to the table, make sure the table format remains intact. 
 Each row of the table is a single text line. When a cell value has newlines, 
 use html break \<br\> for newlines. When a cell value has a pipe symbol, then 
-escape it.
+escape it. 
 
-An implementation step has state. When an implementation step is added, its 
-state is set to `planned`. The `planned` state indicates that the step is not 
-yet (completely) implemented.
-
-When working on an implementation step, you can correct the description of the 
-step, to make it agree with what you did. When you get the solution working and 
-think it is ready for verification, set the implementation step's state to 
-`done`.
-
-When a verification of a requirement fails, the associated implementation 
-steps' states are reset to `planned`.
-
-The implementation plan table has these columns:
-- Implementation step name - Short unique name of the implementation step.
-- Implementation step description - Description of the sub-steps for this 
-  implementation step.
-- Requirement IDs - IDs of requirements, to trace implementation steps to 
-  requirements.
-- State - `planned`, `done`
+The implementation task table has these columns:
+- Name - Short unique name of the implementation task.
+- Description - Description of the sub-tasks for this implementation task.
+- Acceptance criteria - Criteria that the solution must satisfy when testing.
+- Test result - Whether acceptance criteria were passed in last test.
+- Requirement IDs - Comma-separated list of requirement IDs, to verify after 
+  successful test according to test criteria of this task. This cell may be 
+  empty, indicating that requirements testing is not needed after this task.
+- State - `planned`, `pass`
 
 
-## Implementation plan table
+## Implementation tasks table
 
-| Implementation step name | Implementation step description | Requirement IDs | State |
-| --- | --- | --- | --- |
-
+| Name | Description | Acceptance criteria | Test result | Requirement IDs | State |
+| --- | --- | --- | --- | --- | --- |
 

@@ -1,6 +1,6 @@
 ---
 name: requirements
-description: Requirements for the solution.
+description: Requirements that the solution must satisfy.
 ---
 
 # Document description
@@ -16,38 +16,17 @@ intact. The rows are sorted numerically by ID. Each row of the table is a
 single text line. When a cell value has newlines, use html break \<br\> for 
 newlines. When a cell value has a pipe symbol, then escape it.
 
-A requirement has state. Explanation of a requirement's state:
-- When a requirement is added, set its state to `defined`.
-- The `defined` state indicates that the solution is not yet implemented and/or 
-  tested against the acceptance criteria of the requirement.
-- When a requirement definition or acceptance criteria is changed, then reset 
-  its state to `defined`.
-- When the implementation plan is changed during planning, then set the 
-  associated requirements' states to `defined`. Planning is when the 
-  architecture and the implementation plan are made or adjusted, before 
-  implementation.
-- During implementation, notes and corrections that only record what was 
-  actually done are written in the implementation plan. These do not change the 
-  requirements' states.
-- When the solution is tested against the acceptance criteria of a requirement, 
-  and the test passes successfully, then set the requirement's state to `pass`. 
-  If the test fails, then set the requirement's state to `fail`.
-
 The requirements table has these columns:
 - ID - Unique identifier of the requirement. ID is a number with prefix "R". 
-  ID is used as reference for traceability in the implementation plan (see 
-  Requirement IDs column). When a requirement is added to an empty table, set 
-  the ID to "R1".
-- Requirement name - Short descriptive name of the requirement.
-- Requirement description - Complete and concise description of the 
-  requirement.
-- Acceptance criteria - Criteria that the solution must satisfy, with short 
-  explanation on how to test.
-- Test result - Result of testing and whether it meets the acceptance criteria.
-- Architect notes - Notes by the architect.
-- State - `defined`, `pass`, `fail`
+  When a requirement is added to an empty table, set ID to "R1".
+- Name - A unique and short appropriate name of the requirement.
+- Description - Definition of the the requirement.
+- Acceptance criteria - Criteria that the solution must satisfy when testing 
+  and verifying.
+- Test result - Whether acceptance criteria were passed in last test.
+- State - `defined`, `pass`
 
 ## Requirements table
 
-| ID | Requirement name | Requirement description | Acceptance criteria | Test result | Architect notes | State |
-| --- | --- | --- | --- | --- | --- | --- |
+| ID | Name | Description | Acceptance criteria | Test result | State |
+| --- | --- | --- | --- | --- | --- |

@@ -28,6 +28,8 @@ and made more compact and less strict.
 
 ## architect
 
+Warning: Under construction. Do not use.
+
 Let your agent act as the architect of your solution: it converts your idea 
 to requirements, designs the architecture, writes an implementation plan, 
 builds and tests the solution, until the solution meets all the requirements.
@@ -59,9 +61,9 @@ directory:
 ```
 solution.json           Solution name and description
 architect.json          Current workflow step
-docs/requirements.md    Requirements table (state: defined, pass, fail)
+docs/requirements.md    Requirements table
 docs/architecture.md    Architecture of the solution
-docs/implementation-plan.md  Implementation steps (state: planned, done)
+docs/implementation-plan.md  Implementation tasks table
 docs/test-method.md     Method for testing and verifying the solution
 solution/               The solution that is built
 ```

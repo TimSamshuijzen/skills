@@ -6,12 +6,10 @@ description: How to test the solution, or parts of the solution, during implemen
 # Document description
 
 This document provides the method for testing the solution, or parts of the 
-solution, during implementation and verification..
+solution, during implementation tasks, and during requirements verification.
 
-If the test method needs scripts or fixtures, place them in the 
-`solution/tests/` directory in the current working directory. If the test 
-directory does not exist, then create it.
+If the test method needs scripts or fixtures, then these are placed in the 
+`solution/tests/` directory.
 
-# How to test the solution
-
+# How to test the solution during implementation tasks and requirements verification
 
