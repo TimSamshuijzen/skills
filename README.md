@@ -41,9 +41,6 @@ You can add or change requirements, such as new features, by submitting
 change requests. Architect will process the change requests, adjust the 
 requirements, and work until the solution meets all requirements.
 
-Architect stores state. You can reset the session at any time. Architect 
-will pick up from where it left off, with a fresh context window.
-
 
 ### How to use
 
