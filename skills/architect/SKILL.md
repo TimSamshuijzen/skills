@@ -47,7 +47,7 @@ solution.json
 architect.json
 ```
 
-The requirements, architecture, implementation plan and test method for the 
+The requirements, architecture, implementation plan, and test method for the 
 solution are stored in the 'docs/' directory in the current working directory:
 
 ```
@@ -75,7 +75,7 @@ The structure of the `solution/` directory is defined (explicit or implicit) in
 the implementation plan.
 
 If the test method needs scripts or fixtures, then you will place this in the 
-the `solution/tests/` directory.
+`solution/tests/` directory.
 
 
 # Your workflow
@@ -139,7 +139,7 @@ initial content:
 ```
 
 The requirements, architecture, and implementation plan are stored in the 
-'docs/' directory:
+`docs/` directory:
 
 ```
 docs/
@@ -180,14 +180,18 @@ these to the requirements table. Try to keep the rows in the requirements table
 as high level as possible, to cluster requirements where we casn, in order to 
 limit the number of rows in the table.
 
-There are requirements in the requirements table. With the requirements in 
+Look at the requirements in the requirements table. With the requirements in 
 mind, think hard and design and create the architecture and implementation plan 
-and test method, that you think most cleanly gets us a working solution that is 
-asked for. When design the solution with the skills of the development team in 
-mind. If no skills of the development team are provided by the user, then go by 
-your own development skills. For backend development, your preference is 
-Node.js JavaScript. For frontend development, your preference is single page 
-HTML with vanilla JavaScript. Keep it simple. Avoid unnecessary complexity.
+and test method, that you think most cleanly gets a working solution that is 
+asked for. When designing the solution, you take into account the skills of the 
+development team. If no skills of the development team are provided by the 
+user or other skills, then go by your own development skills. For backend 
+development, your preference is Node.js JavaScript. For frontend development, 
+your preference is single page HTML with vanilla JavaScript.
+
+The implementation steps and requirements are testable and verifiable against 
+acceptance criteria. Think of a test method, for regression testing, for 
+testing the solution end-to-end, and/or for testing parts of the solution.
 
 Store your architecture in `docs/architecture.md`.
 
@@ -195,68 +199,62 @@ Store your implementation plan in `docs/implementation-plan.md`.
 
 Store your test method in `docs/test-method.md`.
 
-When you add an implementation task to the implementation plan, then set its 
-state to `planned`. 
+When adding a requirement, set its state to `defined`.
 
-When defining the implementation plan, you ensure it provides enough guidance 
-to implement the solution.
+When adding an implementation task, set its state to `planned`.
 
-When adding an implementation task to the implementation tasks table, then fill 
-in the fields and set it's state to `planned`. The `planned` state indicates 
-that the implemenmtation task is not yet (completely) implemented and tested 
-and verified.
-
-When you have created the architecture and implementation plan, filled in and 
-defined, then check whether the implementation tasks provide full coverage of 
-the requirements (see Requirement IDs column in the implementation tasks 
-table). If there are gaps or inconsistencies, make adjustments to the 
-architecture and implementation plan where needed. When making changes to the 
-implementation tasks table, set the affected implementation tasks' states to 
-`planned`, and set the associated (if any) requirements' states to `defined`.
-
-Think of a test method, for testing the solution end-to-end, and/or for testing 
-parts of the solution, and write this test method in `docs/test-method.md`. If 
-the test method file already exists, then review it and check whether it still 
-is a good method for testing the solution.
-
-When the architecture, implementation plan and test method are complete and 
-consistent, then set the step number in `architect.json` to 2, and continue 
-with step 2.
+Continue thinking and working. When the architecture, implementation plan and 
+test method are complete and consistent, then set the step number in 
+`architect.json` to 2, and continue with step 2.
 
 
 ## Step 2: Implement the solution according to the architecture and implementation plan and test and verify that the solution meets the requirements
 
-In this step you work and think hard to implement the solution according to the 
-implementation tasks in the implementation plan, and verify that the solution 
-meets the requirements, using the test method. You implement the solution in 
-the `solution/` directory in the current working directory. If the `solution/` 
-directory does not exist, then create it.
+In this step you implement the solution according to the implementation tasks 
+in the implementation plan, and verify that the solution meets the 
+requirements. You implement the solution in the `solution/` directory in the 
+current working directory. If the `solution/` directory does not exist, then 
+create it.
 
-Do the implementation tasks in order of the implementation tasks table. Skip the 
-implementation tasks that have state `done`. For each implementation 
-task (that has state `planned`), do the following:
-- For each associated requirement (see Requirement IDs column in implementation 
-  task table), set the requirement's state to `defined`.
-- Follow the implementation task description, and, where required, implement 
-  the code.
-  - If the code for this task already exists, then check whether it is complete 
-    and works, and is still in agreement with the associated requirements. If 
-    not, then continue adding or correcting the code.
-  - If you had to follow a different method than described to get it working, 
-    adjust the implementation task description to make it agree with what you 
-    did.
-- When you think the implementation task is ready for testing, then test it, 
-  using the test method, and verify whether it agrees with the associated 
-  requirements.
-- Keep on thinking and coding and testing until the test passes the acceptance 
-  criteria, and the associated requirements' acceptance criteria. If an 
-  implementation task cannot be made to pass after reasonable attempts (say 10 
-  variations of trying things out), then report to the user, and ask the user 
-  what to do next. In this failure mode, do your best to get back on track.
-- When the tested solution meets the requirement, set the implementation 
-  task's state to `done`.
+Do the implementation tasks in order of the implementation tasks table. Skip 
+the implementation tasks that have state `pass`. For each implementation task 
+set to `planned`, do the following:
+- Empty the test result cell.
+- Follow the implementation task description.
+  - If the work appears already done or partially done, then check whether it 
+    is complete. If not, then augment the solution, make it all consistent and 
+    in agreement with the acceptance criteria.
+  - If you had to follow a different method than described in the description 
+    to get it working, adjust the implementation task description to make it 
+    agree with what you did.
+- When the implementation task is ready for testing, test it against the 
+  acceptance criteria of the implementation task, and fill in the test result. 
+- When it passes the acceptance criteria, and the work is to your liking, set 
+  the implementation task's state to `pass`, and continue with the next 
+  implementation task.
+- If an implementation task cannot be made to pass after reasonable attempts 
+  (say 10 variations of trying things out), then report to the user, and ask 
+  the user what to do next. In this failure mode, do your best to get back on 
+  track.
 
-When the solution is fully built and meets all requirements, then set the step 
+When all implementation tasks pass, do a full check against all requirements. 
+For each requirement in the requirements table, do the following:
+- Empty the test result cell.
+- Check the acceptance criteria. Fill in the result of the test in the test 
+  result.
+- When it passes the acceptance criteria, and it is to your liking, set the 
+  requirement's state to `pass`, and continue with the next requirement.
+- If an acceptance criteria fails, or it is not to your liking, then break the 
+  loop.
+
+If the solution fails to pass an acceptance criteria of a requirement, then 
+break the loop, think hard, look for a way to get everything consistent and 
+working and verified, go back and repeat. If it all cannot be made to pass 
+after reasonable attempts (say 10 variations of trying things out), then 
+report to the user, and ask the user what to do next. In this failure mode, do 
+your best to get back on track.
+
+When the solution is fully built and passes all tests, then set the step 
 number in `architect.json` to 3, and continue with step 3.
 
 
@@ -275,8 +273,8 @@ make sure you understand the change request. If it is unclear, ask the user for
 clarification and/or decisions.
 
 When the change request is clear, then distill from it the requirements, or 
-changes in requirements, and adjust `docs/requirements.md` to reflect the 
-change request. A single change request can result in multiple new 
+changes in requirements, and then add/adjust `docs/requirements.md` to reflect 
+the change request. A single change request can result in multiple new 
 requirements and/or changes in existing requirements. For the requirements 
 that are affected, set their state to `defined`, and empty their test result 
 cells. If any requirements were added or altered, then set the step number in 
