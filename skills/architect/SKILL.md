@@ -151,8 +151,8 @@ docs/
 If the `docs/` directory does not exist, then create it.
 
 If a file in the `docs/` directory is missing, then copy the corresponding file 
-with the same name (including frontmatter) from the 
-`skills/architect/templates/` directory, to the `docs/` directory in the 
+with the same name (including frontmatter) from the `templates/` directory in 
+this skill's directory, to the `docs/` directory in the 
 current work directory.
 
 Next:
@@ -249,10 +249,10 @@ requirements table, do the following:
 
 If the solution fails to pass an acceptance criteria of a requirement, then 
 break the loop, think hard, look for a way to get everything consistent and 
-working and verified, go back and repeat. If it all cannot be made to pass 
-after reasonable attempts (say 10 variations of trying things out), then 
-report to the user, and ask the user what to do next. In this failure mode, do 
-your best to get back on track.
+working and verified, go back, reset states where needed, and repeat. If it 
+all cannot be made to pass after reasonable attempts (say 10 variations of 
+trying things out), then report to the user, and ask the user what to do next. 
+In this failure mode, do your best to get back on track.
 
 When the solution is fully built and passes all tests, then set the step 
 number in `architect.json` to 3, and continue with step 3.
@@ -273,9 +273,12 @@ make sure you understand the change request. If it is unclear, ask the user for
 clarification and/or decisions.
 
 When the change request is clear, then distill from it the requirements, or 
-changes in requirements, and then add/adjust `docs/requirements.md` to reflect 
-the change request. A single change request can result in multiple new 
-requirements and/or changes in existing requirements. For the requirements 
-that are affected, set their state to `defined`, and empty their test result 
-cells. If any requirements were added or altered, then set the step number in 
-`architect.json` to 1.
+changes in requirements, and then add/adjust `docs/requirements.md` to include 
+the change request in the requirements. A single change request can result in 
+multiple new requirements and/or changes in existing requirements. For the 
+requirements that are affected, set their state to `defined`, and empty their 
+test result cells. Next, think hard, adjust `docs/architecture.md` and 
+`docs/implementation-plan.md` to reflect the current set of requirements. No 
+need for testing at this stage, just your best effort.
+
+Next, set the step number in `architect.json` to 1, and continue from there.
