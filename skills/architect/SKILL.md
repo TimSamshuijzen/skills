@@ -32,7 +32,7 @@ document are, by default, unless stated otherwise, relative to the current
 working directory.
 
 
-# Overview of files
+## Overview of files
 
 This section provides an overview of the files, relative to the current 
 working directory, that are relevant to you. If these files do not yet exist, 
@@ -78,12 +78,10 @@ If the test method needs scripts or fixtures, then you will place this in the
 `solution/tests/` directory.
 
 
-# Your workflow
+## Your workflow
 
-If there is a user question or request, attend to that first. If you are asked 
-to continue, then continue with your workflow as described below. 
-
-When coming here in a new or reset session, always begin at step 0.
+When invoked, or are asked to continue, then continue with your workflow as 
+described below. Start at step 0.
 
 Your workflow consists of these steps:
 
@@ -101,12 +99,13 @@ at least 1. In this way, if a session is reset, you can continue your work
 from where you left off, by first reading the step number in step 0, and then 
 jumping to that step number and continue from there.
 
-When invoked, you keep working until you get to step 3, and wait for user.
+When invoked, you keep working until you get to step 3, and wait for user's 
+next request.
 
 The workflow steps are defined in the following sections.
 
 
-## Step 0: Read settings and documents
+### Step 0: Read settings and documents
 
 In this step you ensure the existence of the necessary settings and files. You 
 will read these documents, and determine what is the next step from there.
@@ -152,9 +151,9 @@ docs/
 If the `docs/` directory does not exist, then create it.
 
 If a file in the `docs/` directory is missing, then copy the corresponding file 
-with the same name (including frontmatter) from the `templates/` directory 
-(relative to the skill's directory), to the `docs/` directory in the current 
-work directory.
+with the same name (including frontmatter) from the 
+`skills/architect/templates/` directory, to the `docs/` directory in the 
+current work directory.
 
 Next:
 - Read the requirements in `docs/requirements.md`.
@@ -166,7 +165,7 @@ Next, go to (jump to) the current step number as specified in `architect.json`
 (1 by default) and continue from there.
 
 
-## Step 1: Gather requirements, create architecture and implementation plan and test method
+### Step 1: Gather requirements, create architecture and implementation plan and test method
 
 If no requirements are specified in the requirements table, then you will try 
 to gather requirements from the user, by conversation and asking questions. For 
@@ -177,7 +176,7 @@ requested solution requires a backend server, or numerous backends, and/or a
 frontend UI. When you have a general idea of what is asked, enough to build at 
 least something basic, then think hard to distill the requirements and add 
 these to the requirements table. Try to keep the rows in the requirements table 
-as high level as possible, to cluster requirements where we casn, in order to 
+as high level as possible, to cluster requirements where we can, in order to 
 limit the number of rows in the table.
 
 Look at the requirements in the requirements table. With the requirements in 
@@ -208,7 +207,7 @@ test method are complete and consistent, then set the step number in
 `architect.json` to 2, and continue with step 2.
 
 
-## Step 2: Implement the solution according to the architecture and implementation plan and test and verify that the solution meets the requirements
+### Step 2: Implement the solution according to the architecture and implementation plan and test and verify that the solution meets the requirements
 
 In this step you implement the solution according to the implementation tasks 
 in the implementation plan, and verify that the solution meets the 
@@ -222,8 +221,8 @@ set to `planned`, do the following:
 - Empty the test result cell.
 - Follow the implementation task description.
   - If the work appears already done or partially done, then check whether it 
-    is complete. If not, then augment the solution, make it all consistent and 
-    in agreement with the acceptance criteria.
+    is complete. If not, then augment the solution. If it looks good, leave it 
+    as it is.
   - If you had to follow a different method than described in the description 
     to get it working, adjust the implementation task description to make it 
     agree with what you did.
@@ -238,7 +237,8 @@ set to `planned`, do the following:
   track.
 
 When all implementation tasks pass, do a full check against all requirements. 
-For each requirement in the requirements table, do the following:
+Set all requirements' states to `defined`. Then for each requirement in the 
+requirements table, do the following:
 - Empty the test result cell.
 - Check the acceptance criteria. Fill in the result of the test in the test 
   result.
@@ -258,14 +258,14 @@ When the solution is fully built and passes all tests, then set the step
 number in `architect.json` to 3, and continue with step 3.
 
 
-## Step 3: Solution complete - ready for change requests
+### Step 3: Solution complete - ready for change requests
 
 In this step, the documents are consistent, and the solution meets all 
 requirements. Your work is done for now. Report to the user and ask what to do 
-next. When the user may ask for new features, handle it as a change request. 
+next. If the user asks for new features, handle it as a change request. 
 
 
-# Change requests
+## Change requests
 
 A change request is a request for an addition to or a change in the 
 requirements, such as a new feature. When the user submits a change request, 
