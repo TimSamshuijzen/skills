@@ -24,15 +24,26 @@ escape it.
 
 The implementation task table has these columns:
 - Name - Short unique name of the implementation task.
+- Requirements - The IDs of the requirements in `requirements.md` that this 
+  task implements. Separate multiple IDs with a comma, for example "R1, R3". 
+  This column makes it possible to find the tasks for a requirement that 
+  failed, or for a requirement that changed.
 - Description - Description of the sub-tasks for this implementation task.
 - Acceptance criteria - Criteria that the implementation task must satisfy when 
   testing.
-- Test result - Whether acceptance criteria were passed in last test.
-- State - `planned`, `pass`
+- Test result - What was observed in the last test: the command that was run, 
+  and the result that it gave.
+- State - State of the implementation task:
+  - `planned` - The task is planned, but it is not done or not tested yet.
+  - `pass` - The last test passed the acceptance criteria.
+  - `fail` - The task was done, but the last test did not pass the acceptance 
+    criteria.
+
+Each requirement must have at least one implementation task that implements it.
 
 
 ## Implementation tasks table
 
-| Name | Description | Acceptance criteria | Test result | State |
-| --- | --- | --- | --- | --- |
+| Name | Requirements | Description | Acceptance criteria | Test result | State |
+| --- | --- | --- | --- | --- | --- |
 

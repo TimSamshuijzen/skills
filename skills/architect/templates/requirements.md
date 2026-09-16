@@ -23,8 +23,12 @@ The requirements table has these columns:
 - Description - Definition of the the requirement.
 - Acceptance criteria - Criteria that the solution must satisfy when testing 
   and verifying.
-- Test result - Whether acceptance criteria were passed in last test.
-- State - `defined`, `pass`
+- Test result - What was observed in the last test: the command that was run, 
+  and the result that it gave.
+- State - State of the requirement:
+  - `defined` - The requirement is defined, but it was not tested yet.
+  - `pass` - The last test passed the acceptance criteria.
+  - `fail` - The last test did not pass the acceptance criteria.
 
 ## Requirements table
 
