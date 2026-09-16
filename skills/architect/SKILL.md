@@ -31,6 +31,12 @@ The current working directory is your working directory. File names in this
 document are, by default, unless stated otherwise, relative to the current 
 working directory.
 
+Your working directory is for one solution. It is an empty directory, or a 
+directory that holds the `.architect/` and `solution/` directories of your 
+earlier work. If the working directory holds a different project, then do not 
+start. Tell the user what you found, and ask whether to build here, or in a 
+new directory.
+
 
 ## Overview of files
 
@@ -82,11 +88,11 @@ Each of the two tables has a `Next ID` line above it. When you add an item,
 you give it the ID in `Next ID`, and then you increase `Next ID` by one.
 
 You never reuse an ID, also not after the requirement or the task is removed. 
-An ID points at a row in a table, at a detail section below that table, and, 
-for a requirement, at a test case in the test suite. A reused ID makes a new 
-item pick up the detail section or the test case of an old item. The `Next ID` 
-line is what makes this possible: after a removal, the highest ID in the table 
-no longer tells you which IDs were used.
+An ID points at a row in a table, at a detail section below that table, and at 
+a test case in the test suite, when the suite holds a test case with that ID. 
+A reused ID makes a new item pick up the detail section or the test case of an 
+old item. The `Next ID` line is what makes this possible: after a removal, the 
+highest ID in the table no longer tells you which IDs were used.
 
 
 ## States
@@ -110,15 +116,16 @@ implements that requirement and no other requirement that is not deferred. A
 task that also implements a requirement that is not deferred stays as it is. 
 This is not a decision of your own. It carries out the decision of the user.
 
-A deferred requirement holds no test case in the test suite. A test case for 
-work that is not done fails at each full run, and that failure is not a 
-defect. It would also make you report a red suite as a complete solution. 
-Thus, when the user defers a requirement, remove its test case from the test 
+A deferred requirement holds no test case in the test suite. The same holds 
+for a deferred implementation task. A test case for work that is not done 
+fails at each full run, and that failure is not a defect. It would also make 
+you report a red suite as a complete solution. Thus, when the user defers a 
+requirement or an implementation task, remove its test case from the test 
 suite, and correct the number of test cases in `.architect/test-method.md`. 
-Keep the requirement row, its detail section and its ID. When the user lifts 
-the deferral, set the state of the requirement to `defined`, set the state of 
-its deferred implementation tasks to `planned`, and go to step 2. Part A 
-writes the test case again.
+Keep the row, its detail section and its ID. When the user lifts the 
+deferral, set the state of the requirement to `defined`, set the state of its 
+deferred implementation tasks to `planned`, and go to step 2. Part A writes 
+the test case again.
 
 When the user defers an implementation task, ask the user whether the 
 requirements in its Requirements column are deferred too. A requirement whose 
@@ -137,7 +144,14 @@ case in the test suite, with the same ID as the requirement. The test method
 gives a command that runs the full suite, and a command that runs one single 
 test case. Thus one command gives you the result for all the requirements that 
 the suite covers, in one report. Where you can, test an implementation task 
-with a command too.
+with a command too. A test case for an implementation task goes in the same 
+suite, with the same ID as the task.
+
+The suite thus holds test cases for requirements and test cases for 
+implementation tasks. The number of test cases in the test method counts 
+both. In part B, read the result for a requirement from the test case that 
+has the ID of that requirement. The test cases of the implementation tasks do 
+not give a requirement its state.
 
 Use the command that runs one single test case while you correct a failure, to 
 see the result of that one case quickly. It does not replace the full suite: a 
@@ -219,8 +233,10 @@ step number. The documents hold your state. Step 0 reads the documents and
 finds the current step from there. In this way, if a session is reset, a new 
 session finds the same step, and continues your work from where you left off.
 
-When invoked, you keep working until you get to step 3, and wait for user's 
-next request.
+When invoked, you keep working until you get to step 3, and wait for the 
+user's next request. You stop before step 3 only when a rule in this document 
+tells you to ask the user, such as when you gather the requirements in step 1, 
+or when you cannot get something to pass. When the user answers, you continue.
 
 The workflow steps are defined in the following sections.
 
@@ -270,9 +286,9 @@ than every ID in its table, is repaired as follows. Do not use the highest ID
 in the table. An ID that was used and then removed is no longer in the table, 
 and a new item with that ID picks up the detail section or the test case of 
 the old item. Search for the highest ID with that prefix in the whole 
-document, and, for a requirement ID, also in the Requirements column of the 
-implementation tasks table and in the names of the test cases in the test 
-suite. Set `Next ID` to that highest ID plus one.
+document, and in the names of the test cases in the test suite, and, for a 
+requirement ID, also in the Requirements column of the implementation tasks 
+table. Set `Next ID` to that highest ID plus one.
 
 A requirement without an implementation task is not in the list above, and it 
 is not a damaged table. It means that the plan is not finished. Do not repair 
@@ -285,13 +301,13 @@ nobody designed. The rules below send you to step 1 to plan it.
 First, check the solution. If one or more implementation tasks have the state 
 `pass`, and the `solution/` directory is missing or holds no solution, then 
 the recorded results are not valid: the work that they record is gone. Set 
-each implementation task that is not `deferred` to `planned`, empty its test 
-result and empty its `Changed` column. Set each requirement that is not 
-`deferred` to `defined`, and empty its test result. Set the final check in 
-`.architect/test-method.md` to "Not done". The test suite is in the solution, 
-and thus the test suite is gone too: set the number of test cases in the test 
-method to zero. Tell the user what you found. The rules below then send you to 
-step 2.
+each implementation task that is not `deferred` to `planned`, set its test 
+result to "Not tested yet" and empty its `Changed` column. Set each 
+requirement that is not `deferred` to `defined`, and set its test result to 
+"Not tested yet". Set the final check in `.architect/test-method.md` to "Not 
+done". The test suite is in the solution, and thus the test suite is gone too: 
+set the number of test cases in the test method to zero. Tell the user what 
+you found. The rules below then send you to step 2.
 
 Next, if the request of the user contains a change request, then go to section 
 **Change requests** and continue from there.
@@ -302,7 +318,9 @@ If not, then find the current step. Use the first rule below that applies:
   description, then go to step 1.
 - If the implementation tasks table is empty, then go to step 1.
 - If the architecture document or the test method document is still the empty 
-  template, then go to step 1.
+  template, then go to step 1. A document is still the empty template when its 
+  sections hold no content for this solution. In the test method, the 
+  `## Final check` section does not count: its comment stays there always.
 - If a requirement that is not `deferred` has no implementation task that 
   implements it, then go to step 1. The plan is not finished. Do not invent the 
   task here.
@@ -403,16 +421,19 @@ implementation task with state `planned` or `fail`, do the following:
 - Set the task's `Changed` column to `yes`.
 - Set the final check in `.architect/test-method.md` to "Not done". The 
   solution changes, and thus an earlier final check is no longer valid.
-- Empty the test result in the task's detail section.
+- Set the test result in the task's detail section to "Not tested yet".
 - Follow the implementation task description.
   - If the work appears already done or partially done, then check whether it 
     is complete. If not, then augment the solution. If it looks good, leave it 
     as it is.
   - If you had to follow a different method than described in the description 
     to get it working, adjust the implementation task description to make it 
-    agree with what you did.
+    agree with what you did. If what you did also changed the components, the 
+    data model or the interfaces, then adjust `.architect/architecture.md` 
+    too. The architecture document must describe the solution as it is now.
 - Write or update the test cases in the test suite for the requirements that 
-  this task implements. If the number of test cases changed, then correct the 
+  this task implements, and, when a command can test the task itself, the test 
+  case for the task. If the number of test cases changed, then correct the 
   number in `.architect/test-method.md`.
 - If the task changes the way to install, run or test the solution, then create 
   or update `solution/README.md` (see section **Handoff**).
@@ -483,11 +504,17 @@ manual test, do this:
   `yes` has this requirement ID in its Requirements column, then the solution 
   for this requirement did not change. The last result is still valid. Keep the 
   state and the test result as they are. Do not do the test again.
-- In all other cases, do the manual test. Empty the test result first. Fill in 
-  the test result with what you observed (see section **Rules for testing**). 
-  Set the state to `pass` or `fail`.
+- In all other cases, do the manual test. Set the test result to "Not tested 
+  yet" first. Fill in the test result with what you observed (see section 
+  **Rules for testing**). Set the state to `pass` or `fail`.
 - If the `Changed` column is damaged or missing, then do not guess. Do all the 
   manual tests.
+
+The report also gives the result for the test cases of the implementation 
+tasks. For each implementation task whose test case failed, set the state of 
+the task to `fail`, and fill in its test result with the command that you ran 
+and the result that the report gives. The rules at the end of part B then send 
+you back to part A.
 
 Do the full pass. Do not stop at the first requirement that fails. Collect all 
 the failures. In this way one pass finds all the defects that it can find, and 
@@ -541,7 +568,9 @@ manual test can fail because of a change in a task that does not have the
 requirement ID in its Requirements column. This last check finds such a 
 failure. You do this check one time only, at the end, and not in each cycle.
 
-Then check that `solution/README.md` is correct (see section **Handoff**).
+Then check that `.architect/architecture.md` describes the solution as it is 
+now, and that `solution/README.md` is correct (see section **Handoff**). You 
+keep both up to date while you work, in part A. Here you only verify them.
 
 Record the result of the final check in the `## Final check` section of 
 `.architect/test-method.md`. Give the date, what you ran, and the result. If 
@@ -592,8 +621,8 @@ When the change request is clear, then distill from it the requirements, or
 changes in requirements, and then add/adjust `.architect/requirements.md` to 
 include the change request in the requirements. A single change request can 
 result in multiple new requirements and/or changes in existing requirements. 
-For the requirements that are affected, set their state to `defined`, and empty 
-their test result.
+For the requirements that are affected, set their state to `defined`, and set 
+their test result to "Not tested yet".
 
 Set the final check in `.architect/test-method.md` to "Not done".
 
@@ -601,8 +630,8 @@ Next, think hard, and adjust `.architect/architecture.md`. Then adjust
 `.architect/implementation-plan.md`:
 - Find the implementation tasks for the affected requirements. The Requirements 
   column of the implementation tasks table gives you these tasks.
-- Adjust those tasks, and set their state to `planned`. Empty their test 
-  results.
+- Adjust those tasks, and set their state to `planned`. Set their test results 
+  to "Not tested yet".
 - Add new tasks for the new requirements. Give each a new ID, set the state to 
   `planned`, and record the requirement IDs in the Requirements column.
 - If a requirement was removed, then remove or adjust the tasks that only 
