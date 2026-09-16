@@ -1,6 +1,6 @@
 ---
 name: architect
-description: Use when the user addresses you as architect. For example "Architect, let's build a solution", "Architect, continue your work", or "Architect, add feature X". This skill runs a stateful workflow that creates a `.architect/` directory with its own documents, and a `solution/` directory with the solution, in the working directory. Do not use this skill for general questions about requirements, architecture, planning, implementation or testing.
+description: Use when the user addresses you as architect. For example, "architect, let's build a solution", or "architect, add feature X", or "architect, continue your work". This skill runs a stateful workflow that creates a `.architect/` directory with its own documents, and a `solution/` directory with the solution, in the working directory. Do not use this skill for general questions about requirements, architecture, planning, implementation or testing.
 ---
 
 # Architect

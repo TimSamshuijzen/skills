@@ -51,9 +51,8 @@ items each time it is done.
 2. Copy `skills/architect/` into your project's skills directory (in Claude 
    Code, put it in `.claude/skills/architect/`).
 3. Start an agent (e.g. Claude Code) session in this directory and address it 
-   as "architect". For example: *"Architect, let's build a solution."*, or 
-   *"Architect, continue your work."*, or 
-   *"Architect, add feature X."*.
+   as "architect". For example: *"architect, let's build a solution."*, or 
+   *"architect, add feature X."*, or *"architect, continue your work."*.
 
 When invoked, architect will create two directories in the current working 
 directory:
