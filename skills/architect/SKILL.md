@@ -110,6 +110,16 @@ implements that requirement and no other requirement that is not deferred. A
 task that also implements a requirement that is not deferred stays as it is. 
 This is not a decision of your own. It carries out the decision of the user.
 
+A deferred requirement holds no test case in the test suite. A test case for 
+work that is not done fails at each full run, and that failure is not a 
+defect. It would also make you report a red suite as a complete solution. 
+Thus, when the user defers a requirement, remove its test case from the test 
+suite, and correct the number of test cases in `.architect/test-method.md`. 
+Keep the requirement row, its detail section and its ID. When the user lifts 
+the deferral, set the state of the requirement to `defined`, set the state of 
+its deferred implementation tasks to `planned`, and go to step 2. Part A 
+writes the test case again.
+
 When the user defers an implementation task, ask the user whether the 
 requirements in its Requirements column are deferred too. A requirement whose 
 work is deferred cannot reach `pass`.
@@ -187,8 +197,8 @@ commands from memory, and that is how a wrong command gets into the README.
 
 ## Your workflow
 
-When invoked, or are asked to continue, then continue with your workflow as 
-described below. Always start at step 0.
+When you are invoked, or when you are asked to continue, then continue with 
+your workflow as described below. Always start at step 0.
 
 If the request of the user contains a change request, then do step 0 first, and 
 then go to section **Change requests**. Do this whatever the current step is. 
@@ -251,11 +261,18 @@ following, each time, before you use the documents:
 - The `Next ID` line above each table is present, and its number is higher than 
   every ID in that table.
 
-If a check fails, then repair it when the correct repair is obvious. For 
-example: a `Next ID` line with a number that is not higher than every ID in 
-its table is set to the highest ID in that table plus one. If the correct 
-repair is not obvious, then do not guess and do not continue. Report to the 
-user what is wrong and ask what to do.
+If a check fails, then repair it when the correct repair is obvious. If the 
+correct repair is not obvious, then do not guess and do not continue. Report 
+to the user what is wrong and ask what to do.
+
+A `Next ID` line that is missing, or that holds a number that is not higher 
+than every ID in its table, is repaired as follows. Do not use the highest ID 
+in the table. An ID that was used and then removed is no longer in the table, 
+and a new item with that ID picks up the detail section or the test case of 
+the old item. Search for the highest ID with that prefix in the whole 
+document, and, for a requirement ID, also in the Requirements column of the 
+implementation tasks table and in the names of the test cases in the test 
+suite. Set `Next ID` to that highest ID plus one.
 
 A requirement without an implementation task is not in the list above, and it 
 is not a damaged table. It means that the plan is not finished. Do not repair 
@@ -265,11 +282,24 @@ nobody designed. The rules below send you to step 1 to plan it.
 
 #### Find the current step
 
+First, check the solution. If one or more implementation tasks have the state 
+`pass`, and the `solution/` directory is missing or holds no solution, then 
+the recorded results are not valid: the work that they record is gone. Set 
+each implementation task that is not `deferred` to `planned`, empty its test 
+result and empty its `Changed` column. Set each requirement that is not 
+`deferred` to `defined`, and empty its test result. Set the final check in 
+`.architect/test-method.md` to "Not done". The test suite is in the solution, 
+and thus the test suite is gone too: set the number of test cases in the test 
+method to zero. Tell the user what you found. The rules below then send you to 
+step 2.
+
 Next, if the request of the user contains a change request, then go to section 
 **Change requests** and continue from there.
 
 If not, then find the current step. Use the first rule below that applies:
 - If the requirements table is empty, then go to step 1.
+- If the **Solution** section in `.architect/requirements.md` has no name or no 
+  description, then go to step 1.
 - If the implementation tasks table is empty, then go to step 1.
 - If the architecture document or the test method document is still the empty 
   template, then go to step 1.
@@ -332,8 +362,11 @@ Store your test method in `.architect/test-method.md`.
 
 In the test method, record the number of test cases that a full run must 
 report, and keep it in agreement with the test suite (see section **Rules for 
-testing**). At this moment the test suite is still empty, and thus this number 
-is zero. Part A writes the test cases, and corrects the number each time.
+testing**). When you write the test method for the first time, the test suite 
+is still empty, and thus this number is zero. When you come back to this step 
+with a test suite that already holds test cases, the number is the number of 
+test cases that the suite holds now. Do not set it to zero. Part A writes the 
+test cases, and corrects the number each time.
 
 When adding a requirement, give it a new ID, and set its state to `defined`.
 
@@ -397,6 +430,14 @@ implementation task with state `planned` or `fail`, do the following:
   (say 10 variations of trying things out), then leave its state at `fail`, 
   report to the user what you tried and what failed, and ask the user what to 
   do next.
+
+In part A you test the implementation task against the acceptance criteria of 
+that task. A requirement can need more than one implementation task. Thus the 
+test suite can hold a test case for a requirement whose other tasks are not 
+done yet, and that test case fails. Such a failure is not a failure of the 
+task that you do now. It does not set the task to `fail`, and it does not stop 
+part A. Part B gives the requirements their state, after all the tasks are 
+done.
 
 The `Changed` column holds which tasks changed in the current cycle. Part B 
 needs this. You do not keep this list in your head: a new session must be able 
