@@ -8,7 +8,7 @@ Each sub-directory in the `skills` directory is a skill.
 - `skills/asd-ste100/`
 - `skills/architect/`
 
-You can copy these skills to your own project.
+Copy these skills to your own project where needed.
 
 
 ## keeping-it-simple
@@ -23,7 +23,7 @@ Tell your agent to write in ASD-STE100.
 This skill is copied from Blagoy Simandoff's 
 "asd-ste100-writer-skill" at 
 https://github.com/blagoySimandov/asd-ste100-writer-skill/tree/main ,
-and altered to be more compact and less strict.
+altered to be more compact and less strict.
 
 
 ## architect
@@ -77,6 +77,6 @@ states and the `Changed` column in the implementation tasks table, and the
 final check record in the test method.
 
 The default technology preference of architect is: Node.js for backend, single 
-page HTML with vanilla JavaScript for frontend. Tell the architect the 
+page HTML with modern vanilla JavaScript for frontend. Tell the architect the 
 preferred technology to change this. Alternatively, add the skills of the 
 development team to your project.

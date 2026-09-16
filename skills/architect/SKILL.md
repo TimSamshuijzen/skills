@@ -409,7 +409,7 @@ When designing the solution, you take into account the skills of the
 development team. If no skills of the development team are provided by the 
 user or other skills, then go by your own development skills. For backend 
 development, your preference is Node.js JavaScript. For frontend development, 
-your preference is single page HTML with vanilla JavaScript.
+your preference is single page HTML with modern vanilla JavaScript.
 
 You can get to this step with documents that already have content. This happens 
 when a part of the work is done, and when you come back from step 2 because the 
