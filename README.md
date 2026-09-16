@@ -28,9 +28,6 @@ and made more compact and less strict.
 
 ## architect
 
-Status: new. The workflow was revised and is not yet proven over a long 
-project. Read what it writes and check its work.
-
 Let your agent act as the architect of your solution: it converts your idea 
 to requirements, designs the architecture, writes an implementation plan, 
 builds and tests the solution, until the solution meets all the requirements.
