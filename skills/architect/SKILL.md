@@ -104,6 +104,16 @@ what to do next. You set the state to `deferred` only when the user agrees to
 leave it. A deferred item is work that is not done. You report the deferred 
 items to the user each time that you reach step 3.
 
+A deferral covers the work for the deferred item. When the user defers a 
+requirement, set the state to `deferred` for each implementation task that 
+implements that requirement and no other requirement that is not deferred. A 
+task that also implements a requirement that is not deferred stays as it is. 
+This is not a decision of your own. It carries out the decision of the user.
+
+When the user defers an implementation task, ask the user whether the 
+requirements in its Requirements column are deferred too. A requirement whose 
+work is deferred cannot reach `pass`.
+
 
 ## Rules for testing
 
@@ -152,8 +162,10 @@ The user must be able to run the solution without you. You keep
 - The command that runs the solution.
 - The command that runs the tests.
 
-You update `solution/README.md` when the way to install, run or test the 
-solution changes.
+You create `solution/README.md` in step 2, as soon as the solution can be 
+installed or run. You update it when the way to install, run or test the 
+solution changes. Do not leave it to the final check. At the final check you 
+only verify it, and at that moment you must write the commands from memory.
 
 
 ## Your workflow
@@ -218,17 +230,22 @@ following, each time, before you use the documents:
   same ID, and each task detail section has one row in the table.
 - Each ID in the Requirements column of a task exists in the requirements 
   table.
-- Each requirement has at least one implementation task that implements it. 
-  Skip this check when the implementation tasks table is empty. The plan is 
-  then not written yet, and the rules below send you to step 1.
+- Each requirement has at least one implementation task that implements it.
 - No ID is used two times.
 - The `Next ID` line above each table is present, and its number is higher than 
   every ID in that table.
 
 If a check fails, then repair it when the correct repair is obvious. For 
-example: a requirement without a task needs a new task with state `planned`. 
-If the correct repair is not obvious, then do not guess and do not continue. 
-Report to the user what is wrong and ask what to do.
+example: a `Next ID` line with a number that is not higher than every ID in 
+its table is set to the highest ID in that table plus one. If the correct 
+repair is not obvious, then do not guess and do not continue. Report to the 
+user what is wrong and ask what to do.
+
+A requirement without an implementation task is not a damaged table. It means 
+that the plan is not finished. Do not repair it here, and do not invent a 
+task. A task that you invent here is a task that nobody designed, and the 
+rules below would then send you to step 2 to build it. Go to step 1 and plan 
+it.
 
 
 #### Find the current step
@@ -334,6 +351,8 @@ implementation task with state `planned` or `fail`, do the following:
     agree with what you did.
 - Write or update the test cases in the test suite for the requirements that 
   this task implements.
+- If the task changes the way to install, run or test the solution, then create 
+  or update `solution/README.md` (see section **Handoff**).
 - When the implementation task is ready for testing, do the test against the 
   acceptance criteria of the implementation task. Fill in the test result with 
   what you observed (see section **Rules for testing**).
@@ -374,6 +393,7 @@ reports no test cases, or too few, is a failed run (see section **Rules for
 testing**). Find the cause and correct it before you record any result.
 
 For each requirement that the suite covers:
+- If the state is `deferred`, then do not test it. Keep it as it is.
 - Set the state to `pass` or `fail`, as the report gives it.
 - If the report gives no result for the test case of the requirement, then set 
   the state to `fail`. Record that the test case did not run.
@@ -406,12 +426,15 @@ If one or more requirements fail, then do this for each requirement that
 failed:
 - Find the implementation tasks that implement the requirement. The 
   Requirements column of the implementation tasks table gives you these tasks.
-- Set the state of those implementation tasks to `fail`. If no implementation 
-  task covers the necessary correction, then add a new implementation task for 
-  it, with a new ID, with state `planned`, and with the requirement ID in its 
-  Requirements column. Do not correct the solution without an implementation 
-  task for the correction. In this way the implementation plan stays in 
-  agreement with the solution.
+- Set the state of those implementation tasks to `fail`. Keep a task with state 
+  `deferred` as it is: the user decided to leave that work. If every 
+  implementation task for the requirement is deferred, then you cannot correct 
+  the requirement. Report it to the user and ask what to do next.
+- If no implementation task covers the necessary correction, then add a new 
+  implementation task for it, with a new ID, with state `planned`, and with the 
+  requirement ID in its Requirements column. Do not correct the solution 
+  without an implementation task for the correction. In this way the 
+  implementation plan stays in agreement with the solution.
 
 Keep the state and the test result of the requirements that passed. Do not set 
 them back to `defined`. Part B runs the full suite again in the next cycle, and 
@@ -423,8 +446,11 @@ results are now current for the solution as it is. The next part A marks the
 next changes.
 
 Then think hard. Look for a way to get everything consistent and working and 
-verified. If the architecture or the plan is wrong, then go back to step 1. If 
-not, then go back to part A.
+verified. Then leave part B. Use the first rule below that applies:
+- If all implementation tasks and all requirements have the state `pass` or 
+  `deferred`, then continue with the final check below.
+- If the architecture or the plan is wrong, then go back to step 1.
+- In all other cases, go back to part A.
 
 If it all cannot be made to pass after reasonable attempts (say 10 variations 
 of trying things out), then report to the user what you tried and what failed, 
