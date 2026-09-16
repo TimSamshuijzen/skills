@@ -46,7 +46,8 @@ The implementation tasks table has these columns:
   - `deferred` - The user agreed that this task is not done now. Only the user 
     can decide this.
 
-Each requirement must have at least one implementation task that implements it.
+Each requirement that is not `deferred` must have at least one implementation 
+task that implements it.
 
 An implementation task detail section has this format:
 

@@ -144,6 +144,11 @@ A test run that reports no test cases at all, or fewer test cases than the
 test method says it must report, is a failed run. Do not read it as "nothing 
 failed". Find the cause and correct it first.
 
+The number of test cases in the test method is thus a check on the run. It only 
+works when it is correct. Each time that you add or remove a test case, correct 
+this number in `.architect/test-method.md`. A number that is too high makes 
+every later run a failed run, for a cause that is not in the solution.
+
 In the test result, record what you observed. Give the command that you ran, 
 and the result that it gave. Keep it short, but make it a record of a test 
 that you did.
@@ -230,7 +235,8 @@ following, each time, before you use the documents:
   same ID, and each task detail section has one row in the table.
 - Each ID in the Requirements column of a task exists in the requirements 
   table.
-- Each requirement has at least one implementation task that implements it.
+- Each requirement that is not `deferred` has at least one implementation task 
+  that implements it.
 - No ID is used two times.
 - The `Next ID` line above each table is present, and its number is higher than 
   every ID in that table.
@@ -243,9 +249,8 @@ user what is wrong and ask what to do.
 
 A requirement without an implementation task is not a damaged table. It means 
 that the plan is not finished. Do not repair it here, and do not invent a 
-task. A task that you invent here is a task that nobody designed, and the 
-rules below would then send you to step 2 to build it. Go to step 1 and plan 
-it.
+task. A task that you invent here is a task that nobody designed. The rules 
+below send you to step 1 to plan it.
 
 
 #### Find the current step
@@ -258,6 +263,9 @@ If not, then find the current step. Use the first rule below that applies:
 - If the implementation tasks table is empty, then go to step 1.
 - If the architecture document or the test method document is still the empty 
   template, then go to step 1.
+- If a requirement that is not `deferred` has no implementation task that 
+  implements it, then go to step 1. The plan is not finished. Do not invent the 
+  task here.
 - If one or more implementation tasks or requirements have a state that is not 
   `pass` and not `deferred`, then go to step 2.
 - If the final check in `.architect/test-method.md` is not recorded as passed, 
@@ -310,12 +318,16 @@ Store your implementation plan in `.architect/implementation-plan.md`.
 
 Store your test method in `.architect/test-method.md`.
 
+In the test method, record the number of test cases that a full run must 
+report, and keep it in agreement with the test suite (see section **Rules for 
+testing**).
+
 When adding a requirement, give it a new ID, and set its state to `defined`.
 
 When adding an implementation task, give it a new ID, and set its state to 
 `planned`. Leave its `Changed` column empty. In its Requirements column, record 
-the IDs of the requirements that the task implements. Each requirement must 
-have at least one implementation task that implements it.
+the IDs of the requirements that the task implements. Each requirement that is 
+not `deferred` must have at least one implementation task that implements it.
 
 Continue thinking and working. When the architecture, implementation plan and 
 test method are complete and consistent, then continue with step 2.
@@ -350,7 +362,8 @@ implementation task with state `planned` or `fail`, do the following:
     to get it working, adjust the implementation task description to make it 
     agree with what you did.
 - Write or update the test cases in the test suite for the requirements that 
-  this task implements.
+  this task implements. If the number of test cases changed, then correct the 
+  number in `.architect/test-method.md`.
 - If the task changes the way to install, run or test the solution, then create 
   or update `solution/README.md` (see section **Handoff**).
 - When the implementation task is ready for testing, do the test against the 
@@ -501,9 +514,16 @@ change request.
 
 A change request is a request for an addition to or a change in the 
 requirements, such as a new feature. The user can submit a change request at 
-any time, at any step. When the user submits a change request, make sure you 
-understand the change request. If it is unclear, ask the user for 
-clarification and/or decisions.
+any time, at any step.
+
+If the requirements table is empty, then the request is not a change request. 
+It is the start of a new solution. Go to step 1. Step 1 gathers the 
+requirements by conversation, fills the **Solution** section, and creates the 
+test method. This section does none of these, and step 2 cannot run without a 
+test method.
+
+When the user submits a change request, make sure you understand the change 
+request. If it is unclear, ask the user for clarification and/or decisions.
 
 When the change request is clear, then distill from it the requirements, or 
 changes in requirements, and then add/adjust `.architect/requirements.md` to 
@@ -524,7 +544,8 @@ Next, think hard, and adjust `.architect/architecture.md`. Then adjust
   `planned`, and record the requirement IDs in the Requirements column.
 - If a requirement was removed, then remove or adjust the tasks that only 
   implement it, and remove its ID from the Requirements column of the tasks 
-  that stay. Remove its test case from the test suite.
+  that stay. Remove its test case from the test suite, and correct the number 
+  of test cases in `.architect/test-method.md`.
 
 No need for testing at this stage.
 
