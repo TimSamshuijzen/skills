@@ -122,11 +122,17 @@ These rules apply each time you test, in all steps.
 You test with the method in `.architect/test-method.md`. The acceptance 
 criteria tell you what to test. The test method tells you how to test it.
 
-Prefer an automated test. Give each requirement a test case in the test suite, 
-and give the test case the same ID as the requirement. The test method gives a 
-command that runs the full suite, and a command that runs one single test case. 
-Thus one command gives you the result for all requirements, in one report. 
-Where you can, test an implementation task with a command too.
+Prefer an automated test. A requirement that a command can test gets a test 
+case in the test suite, with the same ID as the requirement. The test method 
+gives a command that runs the full suite, and a command that runs one single 
+test case. Thus one command gives you the result for all the requirements that 
+the suite covers, in one report. Where you can, test an implementation task 
+with a command too.
+
+Use the command that runs one single test case while you correct a failure, to 
+see the result of that one case quickly. It does not replace the full suite: a 
+requirement gets the state `pass` from a full run in part B, and not from a 
+single test case.
 
 Use a manual test only when a command cannot do the test. A manual test is 
 costly, because you must do it again each time that you verify the requirement. 
@@ -140,14 +146,19 @@ A test that did not run is not a pass. When the report gives no result for a
 test case, because the test case is missing, or was skipped, or was filtered 
 out by the command, then the item does not pass.
 
-A test run that reports no test cases at all, or fewer test cases than the 
-test method says it must report, is a failed run. Do not read it as "nothing 
-failed". Find the cause and correct it first.
+A test run that does not report the number of test cases that the test method 
+says it must report is a failed run. This holds for a run that reports no test 
+cases at all, for a run that reports fewer, and for a run that reports more. Do 
+not read such a run as "nothing failed". Find the cause and correct it first.
 
 The number of test cases in the test method is thus a check on the run. It only 
-works when it is correct. Each time that you add or remove a test case, correct 
-this number in `.architect/test-method.md`. A number that is too high makes 
-every later run a failed run, for a cause that is not in the solution.
+works when it is correct. The number is the number of test cases that the suite 
+holds now. It is not the number of test cases that the suite must hold when the 
+solution is complete. When you write the test method for the first time, and 
+the suite is still empty, the number is zero. Each time that you add or remove 
+a test case, correct this number in `.architect/test-method.md`. A number that 
+does not agree with the suite makes every later run a failed run, for a cause 
+that is not in the solution.
 
 In the test result, record what you observed. Give the command that you ran, 
 and the result that it gave. Keep it short, but make it a record of a test 
@@ -170,7 +181,8 @@ The user must be able to run the solution without you. You keep
 You create `solution/README.md` in step 2, as soon as the solution can be 
 installed or run. You update it when the way to install, run or test the 
 solution changes. Do not leave it to the final check. At the final check you 
-only verify it, and at that moment you must write the commands from memory.
+only verify it. If you leave it to the final check, then you must write the 
+commands from memory, and that is how a wrong command gets into the README.
 
 
 ## Your workflow
@@ -235,8 +247,6 @@ following, each time, before you use the documents:
   same ID, and each task detail section has one row in the table.
 - Each ID in the Requirements column of a task exists in the requirements 
   table.
-- Each requirement that is not `deferred` has at least one implementation task 
-  that implements it.
 - No ID is used two times.
 - The `Next ID` line above each table is present, and its number is higher than 
   every ID in that table.
@@ -247,10 +257,10 @@ its table is set to the highest ID in that table plus one. If the correct
 repair is not obvious, then do not guess and do not continue. Report to the 
 user what is wrong and ask what to do.
 
-A requirement without an implementation task is not a damaged table. It means 
-that the plan is not finished. Do not repair it here, and do not invent a 
-task. A task that you invent here is a task that nobody designed. The rules 
-below send you to step 1 to plan it.
+A requirement without an implementation task is not in the list above, and it 
+is not a damaged table. It means that the plan is not finished. Do not repair 
+it here, and do not invent a task. A task that you invent here is a task that 
+nobody designed. The rules below send you to step 1 to plan it.
 
 
 #### Find the current step
@@ -308,9 +318,11 @@ requirements, or the tests that failed, show to be wrong.
 
 The implementation steps and requirements are testable and verifiable against 
 acceptance criteria. Think of a test method, for regression testing, for 
-testing the solution end-to-end, and/or for testing parts of the solution. Give 
-each requirement a test case in the test suite, with the same ID as the 
-requirement (see section **Rules for testing**).
+testing the solution end-to-end, and/or for testing parts of the solution. Each 
+requirement that a command can test gets a test case in the test suite, with 
+the same ID as the requirement. A requirement that a command cannot test gets a 
+manual test, and no test case in the suite. Record it in the manual tests 
+section of the test method (see section **Rules for testing**).
 
 Store your architecture in `.architect/architecture.md`.
 
@@ -320,14 +332,19 @@ Store your test method in `.architect/test-method.md`.
 
 In the test method, record the number of test cases that a full run must 
 report, and keep it in agreement with the test suite (see section **Rules for 
-testing**).
+testing**). At this moment the test suite is still empty, and thus this number 
+is zero. Part A writes the test cases, and corrects the number each time.
 
 When adding a requirement, give it a new ID, and set its state to `defined`.
 
 When adding an implementation task, give it a new ID, and set its state to 
 `planned`. Leave its `Changed` column empty. In its Requirements column, record 
-the IDs of the requirements that the task implements. Each requirement that is 
-not `deferred` must have at least one implementation task that implements it.
+the IDs of the requirements that the task implements. A task that implements no 
+requirement on its own, such as a task that sets up the project structure, has 
+an empty Requirements column. Each requirement that is not `deferred` must have 
+at least one implementation task that implements it. This rule works in one 
+direction only: each requirement needs a task, a task does not need a 
+requirement.
 
 Continue thinking and working. When the architecture, implementation plan and 
 test method are complete and consistent, then continue with step 2.
@@ -400,10 +417,15 @@ First, run the full automated test suite. This is one command (see
 of it. The full suite is cheap, because it is one command, and it gives the 
 result for all the requirements that it covers.
 
+If the test method records that there are no automated test cases, because a 
+command cannot test any requirement of this solution, then there is no suite to 
+run. Record that there is no automated suite, and go on with the manual tests 
+below. Keep this case rare (see section **Rules for testing**).
+
 Read the report. Check first that the run is a real run: the report must give 
 the number of test cases that the test method says it must give. A run that 
-reports no test cases, or too few, is a failed run (see section **Rules for 
-testing**). Find the cause and correct it before you record any result.
+gives a different number is a failed run (see section **Rules for testing**). 
+Find the cause and correct it before you record any result.
 
 For each requirement that the suite covers:
 - If the state is `deferred`, then do not test it. Keep it as it is.

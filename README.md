@@ -52,7 +52,7 @@ items each time it is done.
 
 1. Create a new empty project directory.
 2. Copy `skills/architect/` into your project's skills directory (in Claude 
-   Code, put it in `.claude/skills/architect/`.).
+   Code, put it in `.claude/skills/architect/`).
 3. Start an agent (e.g. Claude Code) session in this directory and address it 
    as "architect". For example: *"Architect, let's build a solution."*, or 
    *"Architect, continue your work."*, or 

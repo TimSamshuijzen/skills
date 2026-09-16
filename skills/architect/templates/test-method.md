@@ -15,7 +15,9 @@ A test must be repeatable. A new session must be able to do the same test and
 get the same result.
 
 Fill in the sections below, and keep them up to date. Replace the comment in 
-each section with the method for this solution.
+each section with the method for this solution. The `## Final check` section is 
+an exception: it holds a state, not a method. Keep its comment, and change only 
+the line above it.
 
 # How to test the solution during implementation tasks and requirements verification
 
@@ -32,7 +34,9 @@ stop it again. -->
 
 <!-- The command that runs the full test suite. The command that runs one 
 single test case by its ID. The number of test cases that a full run must 
-report. -->
+report: this is the number of test cases that the suite holds now, and it is 
+zero when the suite is still empty. If a command cannot test any requirement of 
+this solution, then write "No automated tests" here. -->
 
 ## How to read the result
 

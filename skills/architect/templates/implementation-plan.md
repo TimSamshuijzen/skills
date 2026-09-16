@@ -33,7 +33,9 @@ The implementation tasks table has these columns:
 - Requirements - The IDs of the requirements in `requirements.md` that this 
   task implements. Separate multiple IDs with a comma, for example "R1, R3". 
   This column makes it possible to find the tasks for a requirement that 
-  failed, or for a requirement that changed.
+  failed, or for a requirement that changed. A task that implements no 
+  requirement on its own, such as a task that sets up the project structure, 
+  has an empty Requirements column.
 - Changed - `yes` when the task was done in the current cycle and the result is 
   not verified yet. Empty when not. Requirements verification uses this column 
   to find which manual tests it must do again. Verification empties this column 
