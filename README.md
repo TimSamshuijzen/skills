@@ -28,7 +28,8 @@ and made more compact and less strict.
 
 ## architect
 
-Warning: Under construction. Do not use.
+Status: new. The workflow was revised and is not yet proven over a long 
+project. Read what it writes and check its work.
 
 Let your agent act as the architect of your solution: it converts your idea 
 to requirements, designs the architecture, writes an implementation plan, 
@@ -41,6 +42,11 @@ You can add or change requirements, such as new features, by submitting
 change requests. Architect will process the change requests, adjust the 
 requirements, and work until the solution meets all requirements.
 
+Architect only marks work as done when a test says so. When it cannot get 
+something to pass, it stops and asks you. It never decides on its own to skip 
+a requirement: only you can defer one, and architect reports the deferred 
+items each time it is done.
+
 
 ### How to use
 
@@ -52,21 +58,26 @@ requirements, and work until the solution meets all requirements.
    *"Architect, continue your work."*, or 
    *"Architect, add feature X."*.
 
-When invoked, architect will create a `.architect/` directory in the current 
-working directory, with these files:
+When invoked, architect will create two directories in the current working 
+directory:
 
 ```
-.architect/
-  requirements.md         Solution name, description and requirements table
+.architect/               Architect's own documents
+  requirements.md         Solution name, description and requirements
   architecture.md         Architecture of the solution
-  implementation-plan.md  Implementation tasks table
+  implementation-plan.md  Implementation tasks
   test-method.md          Method for testing and verifying the solution
-  solution/               The solution that is built
+solution/                 The solution that is built, with its README
 ```
 
-Architect writes no files outside the `.architect/` directory. There is no 
-separate state file: the states in the requirements table and in the 
-implementation tasks table tell architect what is done and what is not done.
+The solution is the deliverable, so it is kept out of `.architect/`, where you 
+and your tools can find it. Architect writes no files outside these two 
+directories.
+
+There is no separate state file. Three things in the documents tell architect 
+what is done and what is not done: the states in the requirements table, the 
+states and the `Changed` column in the implementation tasks table, and the 
+final check record in the test method.
 
 The default technology preference of architect is: Node.js for backend, single 
 page HTML with vanilla JavaScript for frontend. Tell the architect the 

@@ -12,18 +12,7 @@ The acceptance criteria in `requirements.md` and `implementation-plan.md` tell
 you what to test. This document tells you how to test it.
 
 A test must be repeatable. A new session must be able to do the same test and 
-get the same result. Thus prefer a test that a command can run. 
-
-Give each requirement a test case in the test suite. Give the test case the 
-same ID as the requirement. Thus one run of the full suite gives the result for 
-each requirement, in one report.
-
-Use a manual test only when a command cannot do the test. A manual test is 
-costly, because it must be done again each time that the requirement is 
-verified. Keep the number of manual tests low.
-
-The test scripts and fixtures are in the `.architect/solution/tests/` directory 
-(create the directory when needed).
+get the same result.
 
 Fill in the sections below, and keep them up to date. Replace the comment in 
 each section with the method for this solution.
@@ -35,18 +24,32 @@ each section with the method for this solution.
 <!-- What must be installed, built or started before a test can run, and how to 
 stop it again. -->
 
+## Where the tests are
+
+<!-- The directory in the solution that holds the test scripts and fixtures. -->
+
 ## How to run the tests
 
 <!-- The command that runs the full test suite. The command that runs one 
-single test case by its ID. -->
+single test case by its ID. The number of test cases that a full run must 
+report. -->
 
 ## How to read the result
 
 <!-- What output shows that a test case passed. What output shows that a test 
 case failed. Where the report gives the result per test case ID. What to copy 
-into the test result cell as the record of the test. -->
+into the test result as the record of the test. -->
 
 ## Manual tests
 
 <!-- The requirement IDs that a command cannot test, and the steps for each of 
 these tests. If there are none, then write "None". -->
+
+## Final check
+
+Not done
+
+<!-- The record of the last check of all manual tests. This check is done one 
+time, after all implementation tasks and all requirements pass. Write "Not 
+done" when the check must still be done. When the check passed, replace "Not 
+done" with the date, what was run, and the result. -->
