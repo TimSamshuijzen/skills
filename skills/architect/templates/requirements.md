@@ -5,8 +5,15 @@ description: Requirements that the solution must satisfy.
 
 # Document description
 
-This document contains the requirements for the solution. The requirements are 
-input for creating the architecture and implementation plan.
+This document contains the name and description of the solution, and the 
+requirements for the solution. The requirements are input for creating the 
+architecture and implementation plan.
+
+# Solution
+
+Name: 
+
+Description: 
 
 # Requirements
 
@@ -18,7 +25,8 @@ newlines. When a cell value has a pipe symbol, then escape it.
 
 The requirements table has these columns:
 - ID - Unique identifier of the requirement. ID is a number with prefix "R". 
-  When a requirement is added to an empty table, set ID to "R1".
+  When a requirement is added to an empty table, set ID to "R1". The test case 
+  for this requirement in the test suite has the same ID.
 - Name - A unique and short appropriate name of the requirement.
 - Description - Definition of the the requirement.
 - Acceptance criteria - Criteria that the solution must satisfy when testing 

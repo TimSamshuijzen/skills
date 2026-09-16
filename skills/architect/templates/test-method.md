@@ -12,11 +12,18 @@ The acceptance criteria in `requirements.md` and `implementation-plan.md` tell
 you what to test. This document tells you how to test it.
 
 A test must be repeatable. A new session must be able to do the same test and 
-get the same result. Thus prefer a test that a command can run. Use a manual 
-test only when a command cannot do the test.
+get the same result. Thus prefer a test that a command can run. 
 
-If the test method needs scripts or fixtures, then place these in the 
-`solution/tests/` directory (create the directory when needed).
+Give each requirement a test case in the test suite. Give the test case the 
+same ID as the requirement. Thus one run of the full suite gives the result for 
+each requirement, in one report.
+
+Use a manual test only when a command cannot do the test. A manual test is 
+costly, because it must be done again each time that the requirement is 
+verified. Keep the number of manual tests low.
+
+The test scripts and fixtures are in the `.architect/solution/tests/` directory 
+(create the directory when needed).
 
 Fill in the sections below, and keep them up to date. Replace the comment in 
 each section with the method for this solution.
@@ -30,14 +37,16 @@ stop it again. -->
 
 ## How to run the tests
 
-<!-- The command that runs all tests. The command that runs one single test. -->
+<!-- The command that runs the full test suite. The command that runs one 
+single test case by its ID. -->
 
 ## How to read the result
 
-<!-- What output shows that a test passed. What output shows that a test 
-failed. What to copy into the test result cell as the record of the test. -->
+<!-- What output shows that a test case passed. What output shows that a test 
+case failed. Where the report gives the result per test case ID. What to copy 
+into the test result cell as the record of the test. -->
 
 ## Manual tests
 
-<!-- The steps for the tests that a command cannot do. If there are none, then 
-write "None". -->
+<!-- The requirement IDs that a command cannot test, and the steps for each of 
+these tests. If there are none, then write "None". -->

@@ -34,8 +34,8 @@ Let your agent act as the architect of your solution: it converts your idea
 to requirements, designs the architecture, writes an implementation plan, 
 builds and tests the solution, until the solution meets all the requirements.
 
-Architect stores state. You can reset the session at any time, architect 
-will pick up from where it left off.
+Architect stores its state in its documents. You can reset the session at any 
+time, architect reads the documents and picks up from where it left off.
 
 You can add or change requirements, such as new features, by submitting
 change requests. Architect will process the change requests, adjust the 
@@ -52,18 +52,21 @@ requirements, and work until the solution meets all requirements.
    *"Architect, continue your work."*, or 
    *"Architect, add feature X."*.
 
-When invoked, architect will create these files in the current working 
-directory:
+When invoked, architect will create a `.architect/` directory in the current 
+working directory, with these files:
 
 ```
-solution.json           Solution name and description
-architect.json          Current workflow step
-docs/requirements.md    Requirements table
-docs/architecture.md    Architecture of the solution
-docs/implementation-plan.md  Implementation tasks table
-docs/test-method.md     Method for testing and verifying the solution
-solution/               The solution that is built
+.architect/
+  requirements.md         Solution name, description and requirements table
+  architecture.md         Architecture of the solution
+  implementation-plan.md  Implementation tasks table
+  test-method.md          Method for testing and verifying the solution
+  solution/               The solution that is built
 ```
+
+Architect writes no files outside the `.architect/` directory. There is no 
+separate state file: the states in the requirements table and in the 
+implementation tasks table tell architect what is done and what is not done.
 
 The default technology preference of architect is: Node.js for backend, single 
 page HTML with vanilla JavaScript for frontend. Tell the architect the 
