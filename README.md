@@ -20,10 +20,10 @@ Tell your agent to keep it simple.
 
 Tell your agent to write in ASD-STE100. 
 
-This is skill is copied from Blagoy Simandoff's 
+This skill is copied from Blagoy Simandoff's 
 "asd-ste100-writer-skill" at 
 https://github.com/blagoySimandov/asd-ste100-writer-skill/tree/main ,
-and made more compact and less strict.
+and altered to be more compact and less strict.
 
 
 ## architect
