@@ -33,9 +33,13 @@ working directory.
 
 Your working directory is for one solution. It is an empty directory, or a 
 directory that holds the `.architect/` and `solution/` directories of your 
-earlier work. If the working directory holds a different project, then do not 
-start. Tell the user what you found, and ask whether to build here, or in a 
-new directory.
+earlier work. These do not count as content: the configuration of the agent, 
+such as `.claude/`, the data of the version control system, such as `.git/`, 
+other files and directories whose name starts with a dot, a `README.md`, and a 
+`LICENSE` file. A directory that holds only these is an empty directory for 
+you. If the working directory holds a different project, such as source code, 
+a build configuration, or a package file, then do not start. Tell the user 
+what you found, and ask whether to build here, or in a new directory.
 
 
 ## Overview of files
@@ -123,9 +127,13 @@ you report a red suite as a complete solution. Thus, when the user defers a
 requirement or an implementation task, remove its test case from the test 
 suite, and correct the number of test cases in `.architect/test-method.md`. 
 Keep the row, its detail section and its ID. When the user lifts the 
-deferral, set the state of the requirement to `defined`, set the state of its 
-deferred implementation tasks to `planned`, and go to step 2. Part A writes 
-the test case again.
+deferral, set the state of the requirement to `defined`, set the state of each 
+implementation task that implements it to `planned`, and go to step 2. This 
+holds for each such task, also a task that is not deferred and that has the 
+state `pass`. Part A does only the tasks with the state `planned` or `fail`, 
+and part A writes the test case again. Thus, if you set no task to `planned`, 
+then nobody writes the test case again. If the user wants an implementation 
+task to stay `deferred`, then the user says so. You do not decide that.
 
 When the user defers an implementation task, ask the user whether the 
 requirements in its Requirements column are deferred too. A requirement whose 
@@ -176,13 +184,15 @@ cases at all, for a run that reports fewer, and for a run that reports more. Do
 not read such a run as "nothing failed". Find the cause and correct it first.
 
 The number of test cases in the test method is thus a check on the run. It only 
-works when it is correct. The number is the number of test cases that the suite 
-holds now. It is not the number of test cases that the suite must hold when the 
-solution is complete. When you write the test method for the first time, and 
-the suite is still empty, the number is zero. Each time that you add or remove 
-a test case, correct this number in `.architect/test-method.md`. A number that 
-does not agree with the suite makes every later run a failed run, for a cause 
-that is not in the solution.
+works when it is correct. The number is on the `Test cases:` line in the 
+`## How to run the tests` section of `.architect/test-method.md`. It is a line 
+of its own, and thus each session finds it in the same place. The number is 
+the number of test cases that the suite holds now. It is not the number of 
+test cases that the suite must hold when the solution is complete. When you 
+write the test method for the first time, and the suite is still empty, the 
+number is zero. Each time that you add or remove a test case, correct this 
+number. A number that does not agree with the suite makes every later run a 
+failed run, for a cause that is not in the solution.
 
 In the test result, record what you observed. Give the command that you ran, 
 and the result that it gave. Keep it short, but make it a record of a test 
@@ -276,6 +286,10 @@ following, each time, before you use the documents:
 - No ID is used two times.
 - The `Next ID` line above each table is present, and its number is higher than 
   every ID in that table.
+- The `Test cases:` line in `.architect/test-method.md` is present, and its 
+  number is the number of test cases that the test suite holds now. Count the 
+  test cases in the suite and compare. When the solution holds no test suite, 
+  the number is zero.
 
 If a check fails, then repair it when the correct repair is obvious. If the 
 correct repair is not obvious, then do not guess and do not continue. Report 
@@ -289,6 +303,13 @@ the old item. Search for the highest ID with that prefix in the whole
 document, and in the names of the test cases in the test suite, and, for a 
 requirement ID, also in the Requirements column of the implementation tasks 
 table. Set `Next ID` to that highest ID plus one.
+
+A `Test cases:` line that is missing, or that holds a number that is not the 
+number of test cases in the suite, is repaired here: count the test cases in 
+the suite, and write that number. This repair is obvious, and thus you do it 
+without asking. It does not hide a test case that is gone: part B reads the 
+result for each requirement, and a requirement whose test case does not run 
+gets the state `fail`.
 
 A requirement without an implementation task is not in the list above, and it 
 is not a damaged table. It means that the plan is not finished. Do not repair 
@@ -306,7 +327,7 @@ result to "Not tested yet" and empty its `Changed` column. Set each
 requirement that is not `deferred` to `defined`, and set its test result to 
 "Not tested yet". Set the final check in `.architect/test-method.md` to "Not 
 done". The test suite is in the solution, and thus the test suite is gone too: 
-set the number of test cases in the test method to zero. Tell the user what 
+set the `Test cases:` line in the test method to zero. Tell the user what 
 you found. The rules below then send you to step 2.
 
 Next, if the request of the user contains a change request, then go to section 
@@ -319,8 +340,10 @@ If not, then find the current step. Use the first rule below that applies:
 - If the implementation tasks table is empty, then go to step 1.
 - If the architecture document or the test method document is still the empty 
   template, then go to step 1. A document is still the empty template when its 
-  sections hold no content for this solution. In the test method, the 
-  `## Final check` section does not count: its comment stays there always.
+  sections hold no content for this solution. In the test method, two things do 
+  not count: the `## Final check` section, because its comment stays there 
+  always, and the `Test cases:` line, because it is a state line and it holds a 
+  number from the start.
 - If a requirement that is not `deferred` has no implementation task that 
   implements it, then go to step 1. The plan is not finished. Do not invent the 
   task here.
@@ -378,13 +401,13 @@ Store your implementation plan in `.architect/implementation-plan.md`.
 
 Store your test method in `.architect/test-method.md`.
 
-In the test method, record the number of test cases that a full run must 
-report, and keep it in agreement with the test suite (see section **Rules for 
-testing**). When you write the test method for the first time, the test suite 
-is still empty, and thus this number is zero. When you come back to this step 
-with a test suite that already holds test cases, the number is the number of 
-test cases that the suite holds now. Do not set it to zero. Part A writes the 
-test cases, and corrects the number each time.
+In the test method, on the `Test cases:` line, record the number of test cases 
+that a full run must report, and keep it in agreement with the test suite (see 
+section **Rules for testing**). When you write the test method for the first 
+time, the test suite is still empty, and thus this number is zero. When you 
+come back to this step with a test suite that already holds test cases, the 
+number is the number of test cases that the suite holds now. Do not set it to 
+zero. Part A writes the test cases, and corrects the number each time.
 
 When adding a requirement, give it a new ID, and set its state to `defined`.
 
@@ -435,6 +458,12 @@ implementation task with state `planned` or `fail`, do the following:
   this task implements, and, when a command can test the task itself, the test 
   case for the task. If the number of test cases changed, then correct the 
   number in `.architect/test-method.md`.
+- If a requirement that this task implements needs a manual test, then write or 
+  update the steps of that test in the manual tests section of 
+  `.architect/test-method.md`. If a requirement that had a manual test now has 
+  a test case in the suite, then remove it from that section. Part B and the 
+  final check do the manual tests from that section. A section that is not up 
+  to date tests the wrong thing, or tests nothing.
 - If the task changes the way to install, run or test the solution, then create 
   or update `solution/README.md` (see section **Handoff**).
 - When the implementation task is ready for testing, do the test against the 
@@ -626,6 +655,14 @@ their test result to "Not tested yet".
 
 Set the final check in `.architect/test-method.md` to "Not done".
 
+Next, check that `.architect/test-method.md` still holds for the change. A 
+change request can change the way to test. A new requirement that a command 
+cannot test needs the steps of its test in the manual tests section. A 
+requirement that is removed goes out of that section. A change in the 
+technology can change the preparation, or the commands, or the place of the 
+tests. Adjust the test method where it no longer holds. Part A writes the test 
+cases themselves.
+
 Next, think hard, and adjust `.architect/architecture.md`. Then adjust 
 `.architect/implementation-plan.md`:
 - Find the implementation tasks for the affected requirements. The Requirements 
@@ -636,8 +673,9 @@ Next, think hard, and adjust `.architect/architecture.md`. Then adjust
   `planned`, and record the requirement IDs in the Requirements column.
 - If a requirement was removed, then remove or adjust the tasks that only 
   implement it, and remove its ID from the Requirements column of the tasks 
-  that stay. Remove its test case from the test suite, and correct the number 
-  of test cases in `.architect/test-method.md`.
+  that stay. Remove the test case of the requirement from the test suite, and 
+  the test case of each implementation task that you removed. Correct the 
+  number of test cases in `.architect/test-method.md`.
 
 No need for testing at this stage.
 
