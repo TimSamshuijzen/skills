@@ -156,10 +156,26 @@ with a command too. A test case for an implementation task goes in the same
 suite, with the same ID as the task.
 
 The suite thus holds test cases for requirements and test cases for 
-implementation tasks. The number of test cases in the test method counts 
-both. In part B, read the result for a requirement from the test case that 
-has the ID of that requirement. The test cases of the implementation tasks do 
-not give a requirement its state.
+implementation tasks. It holds no other test cases. The number of test cases in 
+the test method counts both kinds.
+
+Each test case carries the ID of the requirement or the implementation task 
+that it tests, and each ID has one test case. Keep to these two rules. They 
+make the number of test cases a number that you can count, and they make the 
+result for an ID a result that you can read.
+- Do not add a test case that carries no ID, such as a helper test or a unit 
+  test on the side. It makes the report give more test cases than the number, 
+  and then every run is a failed run, for a cause that is not in the solution. 
+  When a part of the solution needs a test of its own, then it needs an 
+  implementation task of its own. Add the task, and give the test case the ID 
+  of the task.
+- Do not use a test case that the technology expands into more than one 
+  reported test case, such as a test case with a table of rows. It gives the ID 
+  more than one result. Put the rows in one test case, as several checks.
+
+In part B, read the result for a requirement from the test case that has the ID 
+of that requirement. The test cases of the implementation tasks do not give a 
+requirement its state.
 
 Use the command that runs one single test case while you correct a failure, to 
 see the result of that one case quickly. It does not replace the full suite: a 
@@ -181,7 +197,19 @@ out by the command, then the item does not pass.
 A test run that does not report the number of test cases that the test method 
 says it must report is a failed run. This holds for a run that reports no test 
 cases at all, for a run that reports fewer, and for a run that reports more. Do 
-not read such a run as "nothing failed". Find the cause and correct it first.
+not read such a run as "nothing failed". Find the cause and correct it first. 
+The cause is one of these:
+- The command did not run everything: it ran in the wrong place, or the build 
+  failed, or a filter left test cases out.
+- The command looks in too wide a place, and runs test cases that are not in 
+  this suite.
+- A test case breaks one of the two rules above: it carries no ID, or it 
+  expands into more than one reported test case.
+- The number on the `Test cases:` line is out of date.
+
+Count the test cases in the suite before you decide. When the number is the 
+cause, correct the number and run again. Do not correct the number to make the 
+run agree with it without that count: that hides the other three causes.
 
 The number of test cases in the test method is thus a check on the run. It only 
 works when it is correct. The number is on the `Test cases:` line in the 
@@ -290,6 +318,8 @@ following, each time, before you use the documents:
   number is the number of test cases that the test suite holds now. Count the 
   test cases in the suite and compare. When the solution holds no test suite, 
   the number is zero.
+- Each test case in the test suite carries a requirement ID or an 
+  implementation task ID, and each ID has one test case.
 
 If a check fails, then repair it when the correct repair is obvious. If the 
 correct repair is not obvious, then do not guess and do not continue. Report 

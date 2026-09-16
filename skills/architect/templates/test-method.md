@@ -27,6 +27,11 @@ is zero when the suite is still empty. Correct it each time that a test case
 is added or removed. A number that does not agree with the suite makes every 
 later run a failed run.
 
+The suite holds only test cases that carry a requirement ID or an 
+implementation task ID, and each ID has one test case. A test case without an 
+ID, and a test case that the technology expands into more than one reported 
+test case, make the report disagree with the number.
+
 # How to test the solution during implementation tasks and requirements verification
 
 ## Preparation
