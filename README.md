@@ -28,7 +28,7 @@ altered to be more compact and less strict.
 
 ## architect
 
-Let your agent act as the architect of your solution: it converts your idea 
+Let your agent be the architect of your solution: it converts your idea 
 to requirements, designs the architecture, writes an implementation plan, 
 builds and tests the solution, until the solution meets all the requirements.
 
