@@ -1,0 +1,12 @@
+{
+  "name": "voltage",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Voltage - a standalone HTML analog style polyphonic synthesizer.",
+  "scripts": {
+    "test": "node --test \"tests/*.test.js\""
+  },
+  "devDependencies": {
+    "playwright-core": "^1.63.0"
+  }
+}
